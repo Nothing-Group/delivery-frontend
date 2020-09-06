@@ -56,7 +56,7 @@ export function provideApollo(httpLink: HttpLink, auth: AngularFireAuth) {
 
   // using the ability to split links, you can send data to each link
   // depending on what kind of operation is being sent
-  const link2 = ApolloLink.split(
+  const webSocketOrHttpLink = split(
     // split based on operation type
     ({ query }) => {
       const { kind, operation } = getMainDefinition(query) as OperationDefinitionNode;
@@ -66,7 +66,7 @@ export function provideApollo(httpLink: HttpLink, auth: AngularFireAuth) {
     http,
   );
 
-  const link = ApolloLink.from([basic, authenticated, link2]);
+  const link = ApolloLink.from([basic, authenticated, webSocketOrHttpLink]);
 
   const defaultOptions: DefaultOptions = {
     watchQuery: {
