@@ -1,0 +1,8 @@
+<mat-card class="controls-card">
+  <div class="file-upload">
+    <label for="file">Subir CSV</label>
+    <input type="file" id="file" (change)="handleFileInput($event.target.files)" />
+  </div>
+
+  <button mat-raised-button color="primary">ENVIAR</button>
+</mat-card>

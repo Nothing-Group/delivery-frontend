@@ -1,0 +1,16 @@
+@import 'variables';
+:host {
+  display: block;
+}
+
+.controls-card {
+  height: 100%;
+  border-radius: $card-border-radius;
+  display: flex;
+}
+
+.file-upload {
+  label {
+    display: block;
+  }
+}
