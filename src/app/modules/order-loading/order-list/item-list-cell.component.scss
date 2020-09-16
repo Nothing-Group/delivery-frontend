@@ -1,0 +1,8 @@
+@import 'variables';
+
+ul {
+  li {
+    white-space: normal;
+    line-height: $ag-grid-line-height;
+  }
+}

@@ -1,11 +1,42 @@
-<div>
-  Navbar
-  <button routerLink="/orders">Ordenes</button>
-  <button routerLink="/inventory">Inventario</button>
-  <hr />
-  <router-outlet></router-outlet>
+<div class="container">
+  <aside class="nav-bar">
+    <ul class="nav-bar__navigation">
+      <li class="nav-bar__icon">
+        <i class="fas fa-industry fa-4x"></i>
 
-  <hr />
-  <br />
-  Footer
+        <span>La OSA</span>
+      </li>
+      <li class="nav-bar__list-item" routerLink="/orders">
+        <i class="fas fa-truck-loading fa-3x"></i>
+
+        <span class="nav-bar__icontext">Cargar</span>
+      </li>
+      <li class="nav-bar__list-item">
+        <i class="fas fa-search-location fa-3x"></i>
+
+        <span class="nav-bar__icontext">Buscar</span>
+      </li>
+      <li class="nav-bar__list-item">
+        <i class="fas fa-truck fa-3x"></i>
+
+        <span class="nav-bar__icontext">Ordenes</span>
+      </li>
+
+      <li class="nav-bar__list-item" routerLink="/inventory">
+        <i class="fas fa-warehouse fa-3x"></i>
+
+        <span class="nav-bar__icontext">Inventario</span>
+      </li>
+    </ul>
+    <div>
+      <div class="nav-bar__icon">
+        <i class="fas fa-door-closed fa-3x nav-bar__logout"></i>
+
+        <span class="nav-bar__icontext">Salir</span>
+      </div>
+    </div>
+  </aside>
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
 </div>

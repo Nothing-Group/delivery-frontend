@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { OrderModule } from 'src/app/modules/orders/order.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthLayoutComponent } from 'src/app/layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from 'src/app/layout/content-layout/content-layout.component';
 
@@ -18,7 +17,9 @@ const routes: Routes = [
       {
         path: 'orders',
         loadChildren: () =>
-          import('src/app/modules/orders/order.module').then((m) => m.OrderModule),
+          import('src/app/modules/order-loading/order-loading.module').then(
+            (m) => m.OrderLoadingModule,
+          ),
       },
       {
         path: 'inventory',

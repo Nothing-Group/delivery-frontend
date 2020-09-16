@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
+@import '@ag-grid-community/all-modules/dist/styles/ag-theme-material.css';
+
+@import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css';
+@import 'variables';
+@import 'custom-theme';
+
+// resets
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html,
+body {
+  height: 100%;
+}
+//
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+///
+.cell-wrap-text {
+  white-space: normal !important;
+  line-height: $ag-grid-line-height !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.ag-theme-alpine,
+.ag-theme-material {
+  font-size: 16px;
+  /* use theme parameters where possible */
+  // https://www.ag-grid.com/javascript-grid-themes-customising/
+  .ag-root-wrapper {
+    border-radius: $card-border-radius;
+    box-shadow: 0 0 40px lighten(#000, 60%);
+  }
+
+  .ag-header-cell {
+    font-size: 14px;
+  }
+}
