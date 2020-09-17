@@ -1,6 +1,7 @@
 import { ValueFormatterParams } from '@ag-grid-community/all-modules';
 import { ICellEditorAngularComp } from '@ag-grid-community/angular';
 import { Component } from '@angular/core';
+import { ProductAndQuantity } from '../order-loading.types';
 
 @Component({
   selector: 'app-product-quantity-cell',
@@ -12,7 +13,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./item-list-cell.component.scss'],
 })
 export class ProductCellComponent implements ICellEditorAngularComp {
-  public items: Array<[string, string]> = [];
+  public items: Array<ProductAndQuantity> = [];
 
   agInit(params: ValueFormatterParams): void {
     this.items = params.value;
