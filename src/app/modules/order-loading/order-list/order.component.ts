@@ -5,8 +5,10 @@ import {
   ValueFormatterParams,
 } from '@ag-grid-community/all-modules';
 import { Component } from '@angular/core';
-import { parseCSV } from '@shared/utils/csv.utils';
+import { booleanToString, parseCSV, ParsedCSV, stringToBoolean } from '@shared/utils/csv.utils';
+import { Maybe } from 'graphql/jsutils/Maybe';
 import { orderUploadCSVHeader } from '../order-loading.constants';
+import { BoxSize, ProductAndQuantity } from '../order-loading.types';
 import { ProductCellComponent } from './item-list-cell.component';
 
 @Component({
@@ -54,20 +56,20 @@ export class OrderComponent {
     {
       headerName: 'Pago contra entrega',
       field: 'isCOD',
-      valueFormatter: (params: ValueFormatterParams) => {
-        return params.value ? 'SI' : 'NO';
-      },
+      valueFormatter: (params: ValueFormatterParams) => booleanToString(params.value),
     },
     {
       headerName: 'Tamaño',
       field: 'size',
+      valueFormatter: (params: ValueFormatterParams) =>
+        (params.value as Maybe<BoxSize>)?.label || '',
     },
   ];
 
   rowData: Array<{ [key: string]: any }> = [
     {
       name: 'Juan Daniel Peréz Galvis',
-      address: 'Calle 12# 2-65, ',
+      address: 'Calle 12# 2-65',
       phone: '2332473',
       city: 'aaaaaaaaaaaaaaaaaaaaaaa',
       value: '35000',
@@ -133,13 +135,31 @@ export class OrderComponent {
     setTimeout(() => this.gridOptions.api!.resetRowHeights(), 100);
   }
 
-  async handleFileInput(files: FileList) {
-    const file = files.item(0);
-    if (file) {
-      const orders = await parseCSV(file, orderUploadCSVHeader);
-      console.log(orders);
-      this.rowData = orders;
-      this.gridOptions.api!.setRowData(orders);
-    }
+  async handleFileSelected(file: File) {
+    const parsedCSV = await parseCSV(file, orderUploadCSVHeader);
+    console.log(parsedCSV);
+    this.rowData = this.parsedCsvToTableRows(parsedCSV);
+
+    this.gridOptions.api!.setRowData(this.rowData);
+  }
+
+  private parsedCsvToTableRows(parsedCSV: ParsedCSV) {
+    return parsedCSV.map((csvRow) => {
+      const products: Array<ProductAndQuantity> = [
+        [csvRow.product1, csvRow.quantity1],
+        [csvRow.product2, csvRow.quantity2],
+      ]
+        .filter(([product, quantity]) => product && quantity)
+        .map(([product, quantity]) => [product, isNaN(+quantity) ? 0 : +quantity]);
+
+      // TODO: fn to find the box size
+      const size: BoxSize = { label: '20 X 50 X 12', id: 7 };
+      return {
+        ...csvRow,
+        isCOD: stringToBoolean(csvRow.isCOD),
+        products,
+        size,
+      };
+    });
   }
 }

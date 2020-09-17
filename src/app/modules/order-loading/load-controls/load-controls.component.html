@@ -1,8 +1,26 @@
 <mat-card class="controls-card">
-  <div class="file-upload">
-    <label for="file">Subir CSV</label>
-    <input type="file" id="file" (change)="handleFileInput($event.target.files)" />
-  </div>
+  <!--https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/-->
+  <a href="assets/order-load-template.csv" download="carga_pedidos_fly_delivery.csv" target="_blank"
+    ><button mat-raised-button color="primary">DESCARGAR PLANTILLA CSV</button></a
+  >
 
+  <div class="file-upload">
+    <label
+      for="file"
+      mat-raised-button
+      color="primary"
+      style="
+        border: 2px solid #aaa;
+        border-radius: 4px;
+        padding: 2px 5px;
+        margin: 2px;
+        background: #ddd;
+        display: inline-block;
+      "
+    >
+      Subir CSV
+    </label>
+    <input color="primary" type="file" id="file" (change)="handleFileInput($event.target.files)" />
+  </div>
   <button mat-raised-button color="primary">ENVIAR</button>
 </mat-card>
