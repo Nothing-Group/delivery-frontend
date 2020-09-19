@@ -11,6 +11,16 @@ import { orderUploadCSVHeader } from '../order-loading.constants';
 import { BoxSize, ProductAndQuantity } from '../order-loading.types';
 import { ProductCellComponent } from './item-list-cell.component';
 
+const inventory = {
+  'PRODUCTO 1': {
+    id: 7,
+    name: 'PRODUCTO 1',
+  },
+  'PAPA RELLENA': {
+    id: 7,
+    name: 'Papa rellena',
+  },
+};
 @Component({
   selector: 'app-order-list',
   templateUrl: './order.component.html',
@@ -22,6 +32,24 @@ export class OrderComponent {
       headerName: 'Nombre',
       field: 'name',
       cellClass: 'cell-wrap-text',
+      cellEditor: 'agRichSelectCellEditor',
+      cellEditorParams: {
+        values: [
+          'Bob',
+          'Harry',
+          'Sally',
+          'Mary',
+          'John',
+          'Jack',
+          'Sue',
+          'Sean',
+          'Niall',
+          'Albert',
+          'Fred',
+          'Jenny',
+          'Larry',
+        ],
+      },
     },
     {
       headerName: 'Direccion',
@@ -75,11 +103,20 @@ export class OrderComponent {
       value: '35000',
       isCOD: true,
       products: [
-        ['Manzana', 11],
-        ['Miel Organica Mc Pato', 4],
-        ['Almendras tostadas', 3],
-        ['Almendras tostadas', 4],
-        ['Almendras tostadas', 1],
+        {
+          product: {
+            name: 'Manzana',
+            id: 11,
+          },
+          quantity: '2',
+        },
+        {
+          product: {
+            name: 'Miel Organica Mc Pato',
+            id: 11,
+          },
+          quantity: 7,
+        },
       ],
       size: '25x20x10',
       address_detail:
@@ -101,11 +138,19 @@ export class OrderComponent {
       city: 'Bogota',
       value: '72000',
       products: [
-        ['Manzana', 11],
-        ['Miel Organica Mc Pato', 4],
-        ['Almendras tostadas', 3],
-        ['Almendras tostadas', 4],
-        ['Almendras tostadas', 1],
+        {
+          product: {
+            name: 'Miel ñññ Organica Mc Pato',
+          },
+          quantity: 7,
+        },
+        {
+          product: {
+            name: 'Mani Picante',
+            id: 9,
+          },
+          quantity: 7,
+        },
       ],
 
       size: '25x20x10',
@@ -149,8 +194,18 @@ export class OrderComponent {
         [csvRow.product1, csvRow.quantity1],
         [csvRow.product2, csvRow.quantity2],
       ]
-        .filter(([product, quantity]) => product && quantity)
-        .map(([product, quantity]) => [product, isNaN(+quantity) ? 0 : +quantity]);
+        .filter(([productName, quantity]) => productName || quantity)
+        .map(([productName, quantity]) => {
+          // TODO: get from service
+          const product = inventory[productName?.toUpperCase()];
+          return {
+            product: {
+              name: productName,
+              id: product?.id,
+            },
+            quantity: isNaN(+quantity) ? 0 : +quantity,
+          };
+        });
 
       // TODO: fn to find the box size
       const size: BoxSize = { label: '20 X 50 X 12', id: 7 };
