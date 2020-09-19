@@ -1,3 +1,4 @@
-div {
-  background-color: gray;
+@import 'variables';
+:host {
+    background-image: $background-gradient;
 }
