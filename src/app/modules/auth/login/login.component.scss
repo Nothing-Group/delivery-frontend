@@ -1,80 +1,80 @@
 @import 'variables';
 * {
-    user-select: none;
-    /* supported by Chrome and Opera */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
+  user-select: none;
+  /* supported by Chrome and Opera */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
 }
 
 .container {
-    display: flex;
-    font-size: 25px;
-    font-family: 'Grandstander', cursive;
-    height: 100%;
+  display: flex;
+  font-size: 25px;
+  font-family: 'Grandstander', cursive;
+  height: 100%;
 }
 
 .form-container {
-    align-items: center;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 100px;
-    margin-right: 50px;
-    margin-bottom: 50px;
-    padding: 30px;
-    border-radius: $card-border-radius;
-    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  padding: 30px;
+  border-radius: $card-border-radius-big;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
 }
 
 .form__title {
-    margin: 0;
-    padding-top: 35px;
+  margin: 0;
+  padding-top: 35px;
 }
 
 .form__text {
-    margin: 0;
-    padding: 25px;
+  margin: 0;
+  padding: 25px;
 }
 
 .form-icon {
-    width: 500px;
-    height: 300px;
-    margin: 0px;
+  width: 500px;
+  height: 300px;
+  margin: 0px;
 }
 
 .form-icon1 {
-    width: 320px;
-    height: 320px;
-    margin: 0px;
+  width: 320px;
+  height: 320px;
+  margin: 0px;
 }
 
 .form__input {
-    border-radius: $card-border-radius;
-    border: 1px solid black;
-    font-family: 'Grandstander', cursive;
+  border-radius: $card-border-radius-big;
+  border: 1px solid black;
+  font-family: 'Grandstander', cursive;
 }
 
 .form-data {
-    width: 75%;
-    display: flex;
-    justify-content: space-evenly;
+  width: 75%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 button {
-    border: none;
-    background-color: rgb(37, 56, 222);
-    color: white;
-    font-family: 'Grandstander', cursive;
-    font-size: 20px;
-    border-radius: $card-border-radius;
-    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
-    height: 50px;
-    width: 300px;
+  border: none;
+  background-color: $primary-color;
+  color: white;
+  font-family: 'Grandstander', cursive;
+  font-size: 20px;
+  border-radius: $card-border-radius-big;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  height: 50px;
+  width: 300px;
 }

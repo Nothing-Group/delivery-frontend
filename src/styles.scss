@@ -7,44 +7,44 @@
 @import 'custom-theme';
 // resets
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 //
 body {
-    font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 ///
 .cell-wrap-text {
-    white-space: normal !important;
-    line-height: $ag-grid-line-height !important;
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
+  white-space: normal !important;
+  line-height: $ag-grid-line-height !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
 }
 
 .ag-theme-alpine,
 .ag-theme-material {
-    font-size: 16px;
-    /* use theme parameters where possible */
-    // https://www.ag-grid.com/javascript-grid-themes-customising/
-    .ag-root-wrapper {
-        border-radius: $card-border-radius;
-        box-shadow: 0 0 40px lighten(#000, 60%);
-    }
-    .ag-header-cell {
-        font-size: 14px;
-    }
+  font-size: 16px;
+  /* use theme parameters where possible */
+  // https://www.ag-grid.com/javascript-grid-themes-customising/
+  .ag-root-wrapper {
+    border-radius: $card-border-radius-small;
+    box-shadow: 0 0 40px lighten(#000, 60%);
+  }
+  .ag-header-cell {
+    font-size: 14px;
+  }
 }

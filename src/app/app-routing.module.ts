@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@app/guards/auth.guard';
+import { LoggedGuard } from '@app/guards/logged.guard';
 import { AuthLayoutComponent } from 'src/app/layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from 'src/app/layout/content-layout/content-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/auth/login',
+    redirectTo: '/orders',
     pathMatch: 'full',
   },
   {
     path: '',
     component: ContentLayoutComponent,
-    // TODO: auth guard
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'orders',
@@ -30,12 +32,13 @@ const routes: Routes = [
   },
   {
     path: 'auth',
+    canActivate: [LoggedGuard],
     component: AuthLayoutComponent,
     loadChildren: () => import('src/app/modules/auth/auth.module').then((m) => m.AuthModule),
   },
 
   // Fallback when no prior routes is matched
-  { path: '**', redirectTo: '/auth/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/orders', pathMatch: 'full' },
 ];
 
 @NgModule({
