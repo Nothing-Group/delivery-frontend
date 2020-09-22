@@ -1,0 +1,25 @@
+@import 'variables';
+:host {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.grid-wrapper {
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+ag-grid-angular {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+app-inventory-controls {
+    width: 100%;
+    padding: 20px;
+}

@@ -1,3 +1,57 @@
+@import '~@angular/material/theming';
+
+/* Colors */
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat-palette($mat-indigo);
+$app-accent: mat-palette($mat-pink, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$app-warn: mat-palette($mat-red);
+
+$primary-color: mat-color($app-primary);
+$accent-color: mat-color($app-accent);
+$warn-color: mat-color($app-warn);
+
+/* Other */
 $ag-grid-line-height: 20px;
 
-$card-border-radius: 20px;
+$card-border-radius-big: 50px;
+$card-border-radius-small: 20px;
+
+$background-gradient: radial-gradient(
+    circle at 85% 1%,
+    hsla(190, 0%, 93%, 0.05) 0%,
+    hsla(190, 0%, 93%, 0.05) 96%,
+    transparent 96%,
+    transparent 100%
+  ),
+  radial-gradient(
+    circle at 14% 15%,
+    hsla(190, 0%, 93%, 0.05) 0%,
+    hsla(190, 0%, 93%, 0.05) 1%,
+    transparent 1%,
+    transparent 100%
+  ),
+  radial-gradient(
+    circle at 60% 90%,
+    hsla(190, 0%, 93%, 0.05) 0%,
+    hsla(190, 0%, 93%, 0.05) 20%,
+    transparent 20%,
+    transparent 100%
+  ),
+  radial-gradient(
+    circle at 79% 7%,
+    hsla(190, 0%, 93%, 0.05) 0%,
+    hsla(190, 0%, 93%, 0.05) 78%,
+    transparent 78%,
+    transparent 100%
+  ),
+  radial-gradient(
+    circle at 55% 65%,
+    hsla(190, 0%, 93%, 0.05) 0%,
+    hsla(190, 0%, 93%, 0.05) 52%,
+    transparent 52%,
+    transparent 100%
+  ),
+  linear-gradient(135deg, rgb(37, 56, 222), rgb(96, 189, 244));

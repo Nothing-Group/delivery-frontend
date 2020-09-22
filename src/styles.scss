@@ -2,11 +2,9 @@
 
 @import '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
 @import '@ag-grid-community/all-modules/dist/styles/ag-theme-material.css';
-
 @import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css';
 @import 'variables';
 @import 'custom-theme';
-
 // resets
 * {
   margin: 0;
@@ -18,14 +16,17 @@
 *::after {
   box-sizing: inherit;
 }
+
 html,
 body {
   height: 100%;
 }
+
 //
 body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
 ///
 .cell-wrap-text {
   white-space: normal !important;
@@ -40,10 +41,9 @@ body {
   /* use theme parameters where possible */
   // https://www.ag-grid.com/javascript-grid-themes-customising/
   .ag-root-wrapper {
-    border-radius: $card-border-radius;
+    border-radius: $card-border-radius-small;
     box-shadow: 0 0 40px lighten(#000, 60%);
   }
-
   .ag-header-cell {
     font-size: 14px;
   }

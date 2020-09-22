@@ -1,3 +1,4 @@
+@import 'variables';
 :root {
   --color-primary: #30e3ca;
   --color-secondary: #2f89fc;
@@ -8,30 +9,19 @@
   --line: 1px solid var(--color-cuaternary);
 }
 
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  background-color: #22d1ee;
-  /*color: var(--color-Grey-dark-2);
-       background-image: linear-gradient(to right bottom, orangered, green);
-      background-size: cover;
-      background-repeat: no-repeat; */
-  min-height: 100vh;
-}
-
-.container {
+:host {
   display: flex;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: $background-gradient;
 }
 
 .nav-bar {
   padding-top: 50px;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0 $card-border-radius-small $card-border-radius-small 0;
   background-color: #e2f3f5;
   flex: 0 0 7%;
   display: flex;
@@ -41,6 +31,7 @@ body {
   box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);
   z-index: 5;
 }
+
 .nav-bar__icon {
   display: flex;
   flex-direction: column;
@@ -49,6 +40,7 @@ body {
   color: #0e153a;
   font-size: 15px;
 }
+
 .nav-bar__list-item {
   margin: 50px 0px;
   display: flex;
@@ -59,9 +51,11 @@ body {
   color: #0e153a;
   text-transform: uppercase;
 }
+
 .nav-bar__list-item:hover {
   color: red;
 }
+
 .nav-bar__icontext {
   text-transform: uppercase;
   font-weight: 700;
@@ -69,6 +63,6 @@ body {
 }
 
 .content {
-  background-color: #22d1ee;
+  background-image: $background-gradient;
   flex: 1;
 }
