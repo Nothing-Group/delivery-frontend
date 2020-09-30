@@ -1,8 +1,10 @@
+export type Product = {
+  id: number;
+  name: string;
+};
+
 export type ProductAndQuantity = {
-  product: {
-    id: number;
-    name: string;
-  };
+  product: Product;
   quantity: number;
 };
 export type BoxSize = {
