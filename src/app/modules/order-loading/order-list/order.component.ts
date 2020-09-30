@@ -5,11 +5,13 @@ import {
   ValueFormatterParams,
 } from '@ag-grid-community/all-modules';
 import { Component } from '@angular/core';
+import { OrderService } from '@shared/services/orders.service';
 import { booleanToString, parseCSV, ParsedCSV, stringToBoolean } from '@shared/utils/csv.utils';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import { Order_Status_Enum } from 'src/generated/graphql';
 import { orderUploadCSVHeader } from '../order-loading.constants';
 import { BoxSize, ProductAndQuantity } from '../order-loading.types';
-import { ProductCellComponent } from './item-list-cell.component';
+import { ProductCellComponent } from './product-cell/item-list-cell.component';
 
 const inventory = {
   'PRODUCTO 1': {
@@ -21,6 +23,21 @@ const inventory = {
     name: 'Papa rellena',
   },
 };
+
+const inventoryProducts = [
+  {
+    name: 'Mani',
+    id: 7,
+  },
+  {
+    name: 'Peras al vapor',
+    id: 9,
+  },
+  {
+    name: 'Nueces importadas',
+    id: 10,
+  },
+];
 @Component({
   selector: 'app-order-list',
   templateUrl: './order.component.html',
@@ -76,10 +93,13 @@ export class OrderComponent {
     },
     {
       headerName: 'Productos | Cantidad',
-      field: 'products',
+      field: 'productsWithQuantity',
       cellRenderer: 'listRenderer',
       cellClass: 'cell-wrap-text',
       autoHeight: true,
+      cellRendererParams: {
+        inventoryProducts,
+      },
     },
     {
       headerName: 'Pago contra entrega',
@@ -102,7 +122,7 @@ export class OrderComponent {
       city: 'aaaaaaaaaaaaaaaaaaaaaaa',
       value: '35000',
       isCOD: true,
-      products: [
+      productsWithQuantity: [
         {
           product: {
             name: 'Manzana',
@@ -128,7 +148,7 @@ export class OrderComponent {
       phone: '341241234',
       city: 'Bogota',
       value: '32000',
-      products: [],
+      productsWithQuantity: [],
       address_detail: 'Conjunto Calarca, Torre 6, Apartamento 420',
     },
     {
@@ -137,7 +157,7 @@ export class OrderComponent {
       phone: '134142',
       city: 'Bogota',
       value: '72000',
-      products: [
+      productsWithQuantity: [
         {
           product: {
             name: 'Miel ñññ Organica Mc Pato',
@@ -161,7 +181,7 @@ export class OrderComponent {
   public gridOptions: GridOptions;
   modules: Module[] = AllCommunityModules;
 
-  constructor() {
+  constructor(private orderService: OrderService) {
     this.gridOptions = {
       rowData: this.rowData,
       columnDefs: this.columnDefs,
@@ -180,6 +200,36 @@ export class OrderComponent {
     setTimeout(() => this.gridOptions.api!.resetRowHeights(), 100);
   }
 
+  handleSendClicked() {
+    const orders = [
+      {
+        address: '233',
+        city: '23',
+        total_product_count: 2,
+        total_price: 23,
+        total_weight: 23,
+        total_volume: 76,
+        is_cod: false,
+        detail: 'apto 2',
+        status: Order_Status_Enum.Located,
+        phone: 3433,
+      },
+      {
+        address: '233',
+        city: '23',
+        total_product_count: 2,
+        total_price: 23,
+        total_weight: 23,
+        total_volume: 76,
+        is_cod: false,
+        detail: 'apto 2',
+        status: Order_Status_Enum.Located,
+        phone: 3433,
+      },
+    ];
+    this.orderService.submitOrders(orders).subscribe(console.log);
+  }
+
   async handleFileSelected(file: File) {
     const parsedCSV = await parseCSV(file, orderUploadCSVHeader);
     console.log(parsedCSV);
@@ -190,7 +240,7 @@ export class OrderComponent {
 
   private parsedCsvToTableRows(parsedCSV: ParsedCSV) {
     return parsedCSV.map((csvRow) => {
-      const products: Array<ProductAndQuantity> = [
+      const productsWithQuantity: Array<ProductAndQuantity> = [
         [csvRow.product1, csvRow.quantity1],
         [csvRow.product2, csvRow.quantity2],
       ]
@@ -212,7 +262,7 @@ export class OrderComponent {
       return {
         ...csvRow,
         isCOD: stringToBoolean(csvRow.isCOD),
-        products,
+        productsWithQuantity,
         size,
       };
     });

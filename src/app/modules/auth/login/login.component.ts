@@ -18,6 +18,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   handleLoginClick() {
-    this.authService.signInWithEmailAndPassword('juansb827@gmail.com', 'secretPassword');
+    this.authService.signInWithEmailAndPassword('sample4@testfly.com', 'sample4@testfly.com');
   }
 }
