@@ -1,36 +1,251 @@
 @import 'variables';
 * {
-  user-select: none;
-  /* supported by Chrome and Opera */
-  -webkit-user-select: none;
-  /* Safari */
-  -khtml-user-select: none;
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
 }
 
-.container {
-  display: flex;
-  font-size: 25px;
-  font-family: 'Grandstander', cursive;
-  height: 100%;
+@media screen and (max-width: 800px) {
+    .container {
+        background-image: radial-gradient(circle at 85% 1%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 96%, transparent 96%, transparent 100%), radial-gradient(circle at 14% 15%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 1%, transparent 1%, transparent 100%), radial-gradient(circle at 60% 90%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 20%, transparent 20%, transparent 100%), radial-gradient(circle at 79% 7%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 78%, transparent 78%, transparent 100%), radial-gradient(circle at 55% 65%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 52%, transparent 52%, transparent 100%), linear-gradient(135deg, rgb(37, 56, 222), rgb(96, 189, 244));
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        font-family: 'Grandstander', cursive;
+        margin-top: 0;
+    }
+    .wrapper {
+        display: none;
+    }
+    .wrapper__img {
+        width: 150px;
+        height: 100px;
+        animation: bikemove 5s ease;
+    }
+    .form {
+        display: flex;
+        margin-top: 0;
+        flex-direction: column;
+        justify-content: space-around;
+        flex: 1;
+        font-size: 10px;
+    }
+    .form__title {
+        font-size: 25px;
+        background-color: #30e3ca;
+        text-align: center;
+    }
+    .form__text {
+        font-size: 20px;
+        padding: 10px;
+        margin-left: 20px;
+        font-family: 'Grandstander', cursive;
+    }
+    .form__photos {}
+    .form__icon {
+        width: 24.5rem;
+        height: 300px;
+    }
+    .form-data {
+        margin-bottom: 25px;
+    }
+    .form__label {
+        margin-left: 35px;
+        font-size: 1.8rem;
+    }
+    .form__input {
+        border-radius: 50px;
+        border: 1px solid black;
+        font-family: 'Grandstander', cursive;
+        width: 80%;
+        margin-left: 35px;
+        font-size: 25px;
+        padding-left: .7rem;
+    }
+    .form__button {
+        width: 80%;
+        margin-left: 35px;
+        border: none;
+        background-color: rgb(37, 56, 222);
+        color: white;
+        font-family: 'Grandstander', cursive;
+        font-size: 25px;
+        border-radius: 50px;
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, .3);
+        margin-top: 10px;
+    }
+    .form__support {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    @keyframes bikemove {
+        0% {
+            transform: translateX(0);
+        }
+        30% {
+            transform: translateX(50%);
+        }
+        68%,
+        72% {
+            transform: translateX(100%);
+        }
+        88%,
+        92% {
+            transform: translateX(250%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
 }
 
-.form-container {
-  align-items: center;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-top: 100px;
-  margin-right: 50px;
-  margin-bottom: 50px;
-  padding: 30px;
-  border-radius: $card-border-radius-big;
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+@media screen and (min-width: 1000px) {
+    .container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle at 85% 1%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 96%, transparent 96%, transparent 100%), radial-gradient(circle at 14% 15%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 1%, transparent 1%, transparent 100%), radial-gradient(circle at 60% 90%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 20%, transparent 20%, transparent 100%), radial-gradient(circle at 79% 7%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 78%, transparent 78%, transparent 100%), radial-gradient(circle at 55% 65%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 52%, transparent 52%, transparent 100%), linear-gradient(135deg, rgb(37, 56, 222), rgb(96, 189, 244));
+    }
+    .wrapper {
+        flex: 0 0 50%;
+        &__img {
+            width: 100%;
+        }
+    }
+    .form {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 80px;
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+        font-family: 'Grandstander', cursive;
+        margin: 2rem;
+        padding-top: 10px;
+        justify-content: space-evenly;
+        width: 100%;
+        &__title {
+            text-transform: uppercase;
+            text-align: center;
+        }
+        &__photos {
+            margin: 0 auto;
+            text-align: center;
+        }
+        &__icon {
+            width: 45%;
+            margin: 30px auto;
+        }
+        &__text {
+            font-size: 2rem;
+            padding-left: 1.3rem;
+            margin: 0;
+        }
+        &-data {
+            text-align: center;
+        }
+        &__label {
+            font-size: 1.5rem;
+        }
+        &__input {
+            width: 50%;
+            border-radius: 80px;
+            border: 1px solid black;
+            font-family: inherit;
+            height: 2rem;
+        }
+        &__button {
+            border: none;
+            border-radius: 100px;
+            color: white;
+            font-family: inherit;
+            box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+            background-color: rgb(37, 56, 222);
+            height: 2.5rem;
+            width: 300px;
+            margin-top: 10px;
+        }
+        &__support {
+            margin: 10px auto;
+        }
+    }
+}
+
+
+/* @media screen and (min-width: 801px) {
+    .container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle at 85% 1%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 96%, transparent 96%, transparent 100%), radial-gradient(circle at 14% 15%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 1%, transparent 1%, transparent 100%), radial-gradient(circle at 60% 90%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 20%, transparent 20%, transparent 100%), radial-gradient(circle at 79% 7%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 78%, transparent 78%, transparent 100%), radial-gradient(circle at 55% 65%, hsla(190, 0%, 93%, 0.05) 0%, hsla(190, 0%, 93%, 0.05) 52%, transparent 52%, transparent 100%), linear-gradient(135deg, rgb(37, 56, 222), rgb(96, 189, 244));
+    }
+    .wrapper {}
+    .form {
+        align-items: center;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 40px;
+        margin-right: 50px;
+        margin-bottom: 40px;
+        padding: 50px;
+        border-radius: 50px;
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, .3);
+    }
+    .form__icon {
+        width: 400px;
+        height: 350px;
+    }
+    .form__text {
+        font-size: 25px;
+    }
+    .form__label {
+        font-size: 35px;
+    }
+    .form__input {
+        border-radius: 50px;
+        border: 1px solid black;
+        font-family: 'Grandstander', cursive;
+        width: 100%;
+        font-size: 35px;
+    }
+    .form__button {
+        width: 80%;
+        margin-left: 35px;
+        border: none;
+        background-color: rgb(37, 56, 222);
+        color: white;
+        font-family: 'Grandstander', cursive;
+        font-size: 40px;
+        border-radius: 50px;
+        box-shadow: 0 2rem 6rem rgba(0, 0, 0, .3);
+        cursor: pointer;
+    }
+}
+ */
+
+
+/* .form-container {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 100px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    padding: 30px;
+    border-radius: $card-border-radius;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
 }
 
 .form__title {
@@ -68,13 +283,13 @@
 }
 
 button {
-  border: none;
-  background-color: $primary-color;
-  color: white;
-  font-family: 'Grandstander', cursive;
-  font-size: 20px;
-  border-radius: $card-border-radius-big;
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
-  height: 50px;
-  width: 300px;
-}
+    border: none;
+    background-color: rgb(37, 56, 222);
+    color: white;
+    font-family: 'Grandstander', cursive;
+    font-size: 20px;
+    border-radius: $card-border-radius;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    height: 50px;
+    width: 300px;
+} */
