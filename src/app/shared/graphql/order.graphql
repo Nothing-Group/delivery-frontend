@@ -1,0 +1,8 @@
+mutation SubmitOrders($input: [orders_insert_input!]!) {
+  insert_orders(objects: $input) {
+    returning {
+      id
+      address
+    }
+  }
+}

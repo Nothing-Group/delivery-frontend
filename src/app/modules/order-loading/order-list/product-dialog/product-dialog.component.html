@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content [formGroup]="productEditForm">
+  <p>Selecciona un producto de tu inventario</p>
+  <mat-form-field>
+    <mat-label>Producto</mat-label>
+    <mat-select panelClass="ag-custom-component-popup" formControlName="product">
+      <mat-option [value]="null"> </mat-option>
+      <mat-option *ngFor="let p of productList" [value]="p"> {{ p.name }} </mat-option>
+    </mat-select>
+    <mat-error> Porfavor seleccione un producto </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Cantidad</mat-label>
+    <input matInput type="number" formControlName="quantity" />
+    <mat-error *ngIf="f.quantity.hasError('min') || f.quantity.hasError('required')"
+      >La cantidad minima es {{ minQuantity }}
+    </mat-error>
+    <mat-error *ngIf="f.quantity.hasError('max')">La cantidad maxima {{ maxQuantity }} </mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="handleClickOnCancel()">Cancelar</button>
+  <button mat-button (click)="handleClickOk()" cdkFocusInitial>OK</button>
+</div>

@@ -1,6 +1,7 @@
-import gql from 'graphql-tag';
+/* tslint:disable */
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
+import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -14,8 +15,6 @@ export type Scalars = {
   smallint: any;
   timestamptz: any;
 };
-
-
 
 /** expression to compare columns of type Boolean. All fields are combined with logical 'AND'. */
 export type Boolean_Comparison_Exp = {
@@ -61,7 +60,6 @@ export type String_Comparison_Exp = {
   _nsimilar?: Maybe<Scalars['String']>;
   _similar?: Maybe<Scalars['String']>;
 };
-
 
 /** expression to compare columns of type bigint. All fields are combined with logical 'AND'. */
 export type Bigint_Comparison_Exp = {
@@ -111,7 +109,6 @@ export type Clients_Aggregate_Fields = {
   var_samp?: Maybe<Clients_Var_Samp_Fields>;
   variance?: Maybe<Clients_Variance_Fields>;
 };
-
 
 /** aggregate fields of "clients" */
 export type Clients_Aggregate_FieldsCountArgs = {
@@ -171,7 +168,7 @@ export type Clients_Bool_Exp = {
 /** unique or primary key constraints on table "clients" */
 export enum Clients_Constraint {
   /** unique or primary key constraint */
-  ClientsPkey = 'clients_pkey'
+  ClientsPkey = 'clients_pkey',
 }
 
 /** input type for incrementing integer column in table "clients" */
@@ -298,7 +295,7 @@ export enum Clients_Select_Column {
   /** column name */
   Phone = 'phone',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** input type for updating data in table "clients" */
@@ -382,7 +379,7 @@ export enum Clients_Update_Column {
   /** column name */
   Phone = 'phone',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** aggregate var_pop on columns */
@@ -440,7 +437,6 @@ export type Companies = {
   users_aggregate: Users_Aggregate;
 };
 
-
 /** columns and relationships of "companies" */
 export type CompaniesUsersArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
@@ -449,7 +445,6 @@ export type CompaniesUsersArgs = {
   order_by?: Maybe<Array<Users_Order_By>>;
   where?: Maybe<Users_Bool_Exp>;
 };
-
 
 /** columns and relationships of "companies" */
 export type CompaniesUsers_AggregateArgs = {
@@ -482,7 +477,6 @@ export type Companies_Aggregate_Fields = {
   var_samp?: Maybe<Companies_Var_Samp_Fields>;
   variance?: Maybe<Companies_Variance_Fields>;
 };
-
 
 /** aggregate fields of "companies" */
 export type Companies_Aggregate_FieldsCountArgs = {
@@ -540,7 +534,7 @@ export type Companies_Bool_Exp = {
 /** unique or primary key constraints on table "companies" */
 export enum Companies_Constraint {
   /** unique or primary key constraint */
-  CompanyPkey = 'company_pkey'
+  CompanyPkey = 'company_pkey',
 }
 
 /** input type for incrementing integer column in table "companies" */
@@ -660,7 +654,7 @@ export enum Companies_Select_Column {
   /** column name */
   Size = 'size',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** input type for updating data in table "companies" */
@@ -733,7 +727,7 @@ export enum Companies_Update_Column {
   /** column name */
   Size = 'size',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** aggregate var_pop on columns */
@@ -809,7 +803,6 @@ export type Inventories_Aggregate_Fields = {
   variance?: Maybe<Inventories_Variance_Fields>;
 };
 
-
 /** aggregate fields of "inventories" */
 export type Inventories_Aggregate_FieldsCountArgs = {
   columns?: Maybe<Array<Inventories_Select_Column>>;
@@ -879,7 +872,7 @@ export type Inventories_Bool_Exp = {
 /** unique or primary key constraints on table "inventories" */
 export enum Inventories_Constraint {
   /** unique or primary key constraint */
-  InventoriesPkey = 'inventories_pkey'
+  InventoriesPkey = 'inventories_pkey',
 }
 
 /** input type for incrementing integer column in table "inventories" */
@@ -1028,7 +1021,7 @@ export enum Inventories_Select_Column {
   /** column name */
   Volume = 'volume',
   /** column name */
-  Weight = 'weight'
+  Weight = 'weight',
 }
 
 /** input type for updating data in table "inventories" */
@@ -1150,7 +1143,7 @@ export enum Inventories_Update_Column {
   /** column name */
   Volume = 'volume',
   /** column name */
-  Weight = 'weight'
+  Weight = 'weight',
 }
 
 /** aggregate var_pop on columns */
@@ -1341,126 +1334,105 @@ export type Mutation_Root = {
   update_users_by_pk?: Maybe<Users>;
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_ClientsArgs = {
   where: Clients_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Clients_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_CompaniesArgs = {
   where: Companies_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Companies_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_InventoriesArgs = {
   where: Inventories_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Inventories_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_Order_ProductsArgs = {
   where: Order_Products_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Order_Products_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_Order_StatusArgs = {
   where: Order_Status_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Order_Status_By_PkArgs = {
   value: Scalars['String'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_OrdersArgs = {
   where: Orders_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Orders_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_Route_DetailsArgs = {
   where: Route_Details_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Route_Details_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_RoutesArgs = {
   where: Routes_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Routes_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_User_RoleArgs = {
   where: User_Role_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_User_Role_By_PkArgs = {
   value: Scalars['String'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_UsersArgs = {
   where: Users_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_Users_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_ClientsArgs = {
@@ -1468,13 +1440,11 @@ export type Mutation_RootInsert_ClientsArgs = {
   on_conflict?: Maybe<Clients_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Clients_OneArgs = {
   object: Clients_Insert_Input;
   on_conflict?: Maybe<Clients_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_CompaniesArgs = {
@@ -1482,13 +1452,11 @@ export type Mutation_RootInsert_CompaniesArgs = {
   on_conflict?: Maybe<Companies_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Companies_OneArgs = {
   object: Companies_Insert_Input;
   on_conflict?: Maybe<Companies_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_InventoriesArgs = {
@@ -1496,13 +1464,11 @@ export type Mutation_RootInsert_InventoriesArgs = {
   on_conflict?: Maybe<Inventories_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Inventories_OneArgs = {
   object: Inventories_Insert_Input;
   on_conflict?: Maybe<Inventories_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_Order_ProductsArgs = {
@@ -1510,13 +1476,11 @@ export type Mutation_RootInsert_Order_ProductsArgs = {
   on_conflict?: Maybe<Order_Products_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Order_Products_OneArgs = {
   object: Order_Products_Insert_Input;
   on_conflict?: Maybe<Order_Products_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_Order_StatusArgs = {
@@ -1524,13 +1488,11 @@ export type Mutation_RootInsert_Order_StatusArgs = {
   on_conflict?: Maybe<Order_Status_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Order_Status_OneArgs = {
   object: Order_Status_Insert_Input;
   on_conflict?: Maybe<Order_Status_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_OrdersArgs = {
@@ -1538,13 +1500,11 @@ export type Mutation_RootInsert_OrdersArgs = {
   on_conflict?: Maybe<Orders_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Orders_OneArgs = {
   object: Orders_Insert_Input;
   on_conflict?: Maybe<Orders_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_Route_DetailsArgs = {
@@ -1552,13 +1512,11 @@ export type Mutation_RootInsert_Route_DetailsArgs = {
   on_conflict?: Maybe<Route_Details_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Route_Details_OneArgs = {
   object: Route_Details_Insert_Input;
   on_conflict?: Maybe<Route_Details_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_RoutesArgs = {
@@ -1566,13 +1524,11 @@ export type Mutation_RootInsert_RoutesArgs = {
   on_conflict?: Maybe<Routes_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Routes_OneArgs = {
   object: Routes_Insert_Input;
   on_conflict?: Maybe<Routes_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_User_RoleArgs = {
@@ -1580,13 +1536,11 @@ export type Mutation_RootInsert_User_RoleArgs = {
   on_conflict?: Maybe<User_Role_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_User_Role_OneArgs = {
   object: User_Role_Insert_Input;
   on_conflict?: Maybe<User_Role_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_UsersArgs = {
@@ -1594,13 +1548,11 @@ export type Mutation_RootInsert_UsersArgs = {
   on_conflict?: Maybe<Users_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Users_OneArgs = {
   object: Users_Insert_Input;
   on_conflict?: Maybe<Users_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_ClientsArgs = {
@@ -1609,14 +1561,12 @@ export type Mutation_RootUpdate_ClientsArgs = {
   where: Clients_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Clients_By_PkArgs = {
   _inc?: Maybe<Clients_Inc_Input>;
   _set?: Maybe<Clients_Set_Input>;
   pk_columns: Clients_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_CompaniesArgs = {
@@ -1625,14 +1575,12 @@ export type Mutation_RootUpdate_CompaniesArgs = {
   where: Companies_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Companies_By_PkArgs = {
   _inc?: Maybe<Companies_Inc_Input>;
   _set?: Maybe<Companies_Set_Input>;
   pk_columns: Companies_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_InventoriesArgs = {
@@ -1641,14 +1589,12 @@ export type Mutation_RootUpdate_InventoriesArgs = {
   where: Inventories_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Inventories_By_PkArgs = {
   _inc?: Maybe<Inventories_Inc_Input>;
   _set?: Maybe<Inventories_Set_Input>;
   pk_columns: Inventories_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_Order_ProductsArgs = {
@@ -1657,7 +1603,6 @@ export type Mutation_RootUpdate_Order_ProductsArgs = {
   where: Order_Products_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Order_Products_By_PkArgs = {
   _inc?: Maybe<Order_Products_Inc_Input>;
@@ -1665,20 +1610,17 @@ export type Mutation_RootUpdate_Order_Products_By_PkArgs = {
   pk_columns: Order_Products_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Order_StatusArgs = {
   _set?: Maybe<Order_Status_Set_Input>;
   where: Order_Status_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Order_Status_By_PkArgs = {
   _set?: Maybe<Order_Status_Set_Input>;
   pk_columns: Order_Status_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_OrdersArgs = {
@@ -1687,14 +1629,12 @@ export type Mutation_RootUpdate_OrdersArgs = {
   where: Orders_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Orders_By_PkArgs = {
   _inc?: Maybe<Orders_Inc_Input>;
   _set?: Maybe<Orders_Set_Input>;
   pk_columns: Orders_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_Route_DetailsArgs = {
@@ -1703,14 +1643,12 @@ export type Mutation_RootUpdate_Route_DetailsArgs = {
   where: Route_Details_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Route_Details_By_PkArgs = {
   _inc?: Maybe<Route_Details_Inc_Input>;
   _set?: Maybe<Route_Details_Set_Input>;
   pk_columns: Route_Details_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_RoutesArgs = {
@@ -1719,7 +1657,6 @@ export type Mutation_RootUpdate_RoutesArgs = {
   where: Routes_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Routes_By_PkArgs = {
   _inc?: Maybe<Routes_Inc_Input>;
@@ -1727,13 +1664,11 @@ export type Mutation_RootUpdate_Routes_By_PkArgs = {
   pk_columns: Routes_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_User_RoleArgs = {
   _set?: Maybe<User_Role_Set_Input>;
   where: User_Role_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_User_Role_By_PkArgs = {
@@ -1741,14 +1676,12 @@ export type Mutation_RootUpdate_User_Role_By_PkArgs = {
   pk_columns: User_Role_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _inc?: Maybe<Users_Inc_Input>;
   _set?: Maybe<Users_Set_Input>;
   where: Users_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_Users_By_PkArgs = {
@@ -1770,7 +1703,7 @@ export enum Order_By {
   /** in the descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
   /** in the descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last'
+  DescNullsLast = 'desc_nulls_last',
 }
 
 /** columns and relationships of "order_products" */
@@ -1806,7 +1739,6 @@ export type Order_Products_Aggregate_Fields = {
   var_samp?: Maybe<Order_Products_Var_Samp_Fields>;
   variance?: Maybe<Order_Products_Variance_Fields>;
 };
-
 
 /** aggregate fields of "order_products" */
 export type Order_Products_Aggregate_FieldsCountArgs = {
@@ -1868,7 +1800,7 @@ export type Order_Products_Bool_Exp = {
 /** unique or primary key constraints on table "order_products" */
 export enum Order_Products_Constraint {
   /** unique or primary key constraint */
-  OrderProductsPkey = 'order_products_pkey'
+  OrderProductsPkey = 'order_products_pkey',
 }
 
 /** input type for incrementing integer column in table "order_products" */
@@ -1981,7 +1913,7 @@ export enum Order_Products_Select_Column {
   /** column name */
   Quantity = 'quantity',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** input type for updating data in table "order_products" */
@@ -2075,7 +2007,7 @@ export enum Order_Products_Update_Column {
   /** column name */
   Quantity = 'quantity',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** aggregate var_pop on columns */
@@ -2151,7 +2083,6 @@ export type Order_Status_Aggregate_Fields = {
   min?: Maybe<Order_Status_Min_Fields>;
 };
 
-
 /** aggregate fields of "order_status" */
 export type Order_Status_Aggregate_FieldsCountArgs = {
   columns?: Maybe<Array<Order_Status_Select_Column>>;
@@ -2183,12 +2114,12 @@ export type Order_Status_Bool_Exp = {
 /** unique or primary key constraints on table "order_status" */
 export enum Order_Status_Constraint {
   /** unique or primary key constraint */
-  OrderProductStatusPkey = 'order_product_status_pkey'
+  OrderProductStatusPkey = 'order_product_status_pkey',
 }
 
 export enum Order_Status_Enum {
   /** lat and long have been found */
-  Located = 'LOCATED'
+  Located = 'LOCATED',
 }
 
 /** expression to compare columns of type order_status_enum. All fields are combined with logical 'AND'. */
@@ -2270,7 +2201,7 @@ export enum Order_Status_Select_Column {
   /** column name */
   Commentary = 'commentary',
   /** column name */
-  Value = 'value'
+  Value = 'value',
 }
 
 /** input type for updating data in table "order_status" */
@@ -2284,7 +2215,7 @@ export enum Order_Status_Update_Column {
   /** column name */
   Commentary = 'commentary',
   /** column name */
-  Value = 'value'
+  Value = 'value',
 }
 
 /** columns and relationships of "orders" */
@@ -2297,6 +2228,10 @@ export type Orders = {
   detail: Scalars['String'];
   id: Scalars['bigint'];
   is_cod: Scalars['Boolean'];
+  /** An array relationship */
+  order_products: Array<Order_Products>;
+  /** An aggregated array relationship */
+  order_products_aggregate: Order_Products_Aggregate;
   phone: Scalars['Int'];
   status: Order_Status_Enum;
   total_price: Scalars['Int'];
@@ -2304,6 +2239,24 @@ export type Orders = {
   total_volume: Scalars['Int'];
   total_weight: Scalars['Int'];
   user_id: Scalars['bigint'];
+};
+
+/** columns and relationships of "orders" */
+export type OrdersOrder_ProductsArgs = {
+  distinct_on?: Maybe<Array<Order_Products_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Order_Products_Order_By>>;
+  where?: Maybe<Order_Products_Bool_Exp>;
+};
+
+/** columns and relationships of "orders" */
+export type OrdersOrder_Products_AggregateArgs = {
+  distinct_on?: Maybe<Array<Order_Products_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Order_Products_Order_By>>;
+  where?: Maybe<Order_Products_Bool_Exp>;
 };
 
 /** aggregated selection of "orders" */
@@ -2328,7 +2281,6 @@ export type Orders_Aggregate_Fields = {
   var_samp?: Maybe<Orders_Var_Samp_Fields>;
   variance?: Maybe<Orders_Variance_Fields>;
 };
-
 
 /** aggregate fields of "orders" */
 export type Orders_Aggregate_FieldsCountArgs = {
@@ -2396,6 +2348,7 @@ export type Orders_Bool_Exp = {
   detail?: Maybe<String_Comparison_Exp>;
   id?: Maybe<Bigint_Comparison_Exp>;
   is_cod?: Maybe<Boolean_Comparison_Exp>;
+  order_products?: Maybe<Order_Products_Bool_Exp>;
   phone?: Maybe<Int_Comparison_Exp>;
   status?: Maybe<Order_Status_Enum_Comparison_Exp>;
   total_price?: Maybe<Int_Comparison_Exp>;
@@ -2408,7 +2361,7 @@ export type Orders_Bool_Exp = {
 /** unique or primary key constraints on table "orders" */
 export enum Orders_Constraint {
   /** unique or primary key constraint */
-  OrdersPkey = 'orders_pkey'
+  OrdersPkey = 'orders_pkey',
 }
 
 /** input type for incrementing integer column in table "orders" */
@@ -2433,6 +2386,7 @@ export type Orders_Insert_Input = {
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
   is_cod?: Maybe<Scalars['Boolean']>;
+  order_products?: Maybe<Order_Products_Arr_Rel_Insert_Input>;
   phone?: Maybe<Scalars['Int']>;
   status?: Maybe<Order_Status_Enum>;
   total_price?: Maybe<Scalars['Int']>;
@@ -2539,6 +2493,7 @@ export type Orders_Order_By = {
   detail?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   is_cod?: Maybe<Order_By>;
+  order_products_aggregate?: Maybe<Order_Products_Aggregate_Order_By>;
   phone?: Maybe<Order_By>;
   status?: Maybe<Order_By>;
   total_price?: Maybe<Order_By>;
@@ -2582,7 +2537,7 @@ export enum Orders_Select_Column {
   /** column name */
   TotalWeight = 'total_weight',
   /** column name */
-  UserId = 'user_id'
+  UserId = 'user_id',
 }
 
 /** input type for updating data in table "orders" */
@@ -2740,7 +2695,7 @@ export enum Orders_Update_Column {
   /** column name */
   TotalWeight = 'total_weight',
   /** column name */
-  UserId = 'user_id'
+  UserId = 'user_id',
 }
 
 /** aggregate var_pop on columns */
@@ -2889,7 +2844,6 @@ export type Query_Root = {
   users_by_pk?: Maybe<Users>;
 };
 
-
 /** query root */
 export type Query_RootClientsArgs = {
   distinct_on?: Maybe<Array<Clients_Select_Column>>;
@@ -2898,7 +2852,6 @@ export type Query_RootClientsArgs = {
   order_by?: Maybe<Array<Clients_Order_By>>;
   where?: Maybe<Clients_Bool_Exp>;
 };
-
 
 /** query root */
 export type Query_RootClients_AggregateArgs = {
@@ -2909,12 +2862,10 @@ export type Query_RootClients_AggregateArgs = {
   where?: Maybe<Clients_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootClients_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** query root */
 export type Query_RootCompaniesArgs = {
@@ -2925,7 +2876,6 @@ export type Query_RootCompaniesArgs = {
   where?: Maybe<Companies_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootCompanies_AggregateArgs = {
   distinct_on?: Maybe<Array<Companies_Select_Column>>;
@@ -2935,12 +2885,10 @@ export type Query_RootCompanies_AggregateArgs = {
   where?: Maybe<Companies_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootCompanies_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** query root */
 export type Query_RootInventoriesArgs = {
@@ -2951,7 +2899,6 @@ export type Query_RootInventoriesArgs = {
   where?: Maybe<Inventories_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootInventories_AggregateArgs = {
   distinct_on?: Maybe<Array<Inventories_Select_Column>>;
@@ -2961,12 +2908,10 @@ export type Query_RootInventories_AggregateArgs = {
   where?: Maybe<Inventories_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootInventories_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** query root */
 export type Query_RootOrder_ProductsArgs = {
@@ -2977,7 +2922,6 @@ export type Query_RootOrder_ProductsArgs = {
   where?: Maybe<Order_Products_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootOrder_Products_AggregateArgs = {
   distinct_on?: Maybe<Array<Order_Products_Select_Column>>;
@@ -2987,12 +2931,10 @@ export type Query_RootOrder_Products_AggregateArgs = {
   where?: Maybe<Order_Products_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootOrder_Products_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** query root */
 export type Query_RootOrder_StatusArgs = {
@@ -3003,7 +2945,6 @@ export type Query_RootOrder_StatusArgs = {
   where?: Maybe<Order_Status_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootOrder_Status_AggregateArgs = {
   distinct_on?: Maybe<Array<Order_Status_Select_Column>>;
@@ -3013,12 +2954,10 @@ export type Query_RootOrder_Status_AggregateArgs = {
   where?: Maybe<Order_Status_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootOrder_Status_By_PkArgs = {
   value: Scalars['String'];
 };
-
 
 /** query root */
 export type Query_RootOrdersArgs = {
@@ -3029,7 +2968,6 @@ export type Query_RootOrdersArgs = {
   where?: Maybe<Orders_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootOrders_AggregateArgs = {
   distinct_on?: Maybe<Array<Orders_Select_Column>>;
@@ -3039,12 +2977,10 @@ export type Query_RootOrders_AggregateArgs = {
   where?: Maybe<Orders_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootOrders_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** query root */
 export type Query_RootRoute_DetailsArgs = {
@@ -3055,7 +2991,6 @@ export type Query_RootRoute_DetailsArgs = {
   where?: Maybe<Route_Details_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootRoute_Details_AggregateArgs = {
   distinct_on?: Maybe<Array<Route_Details_Select_Column>>;
@@ -3065,12 +3000,10 @@ export type Query_RootRoute_Details_AggregateArgs = {
   where?: Maybe<Route_Details_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootRoute_Details_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** query root */
 export type Query_RootRoutesArgs = {
@@ -3081,7 +3014,6 @@ export type Query_RootRoutesArgs = {
   where?: Maybe<Routes_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootRoutes_AggregateArgs = {
   distinct_on?: Maybe<Array<Routes_Select_Column>>;
@@ -3091,12 +3023,10 @@ export type Query_RootRoutes_AggregateArgs = {
   where?: Maybe<Routes_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootRoutes_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** query root */
 export type Query_RootUser_RoleArgs = {
@@ -3107,7 +3037,6 @@ export type Query_RootUser_RoleArgs = {
   where?: Maybe<User_Role_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootUser_Role_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Role_Select_Column>>;
@@ -3117,12 +3046,10 @@ export type Query_RootUser_Role_AggregateArgs = {
   where?: Maybe<User_Role_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootUser_Role_By_PkArgs = {
   value: Scalars['String'];
 };
-
 
 /** query root */
 export type Query_RootUsersArgs = {
@@ -3133,7 +3060,6 @@ export type Query_RootUsersArgs = {
   where?: Maybe<Users_Bool_Exp>;
 };
 
-
 /** query root */
 export type Query_RootUsers_AggregateArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
@@ -3142,7 +3068,6 @@ export type Query_RootUsers_AggregateArgs = {
   order_by?: Maybe<Array<Users_Order_By>>;
   where?: Maybe<Users_Bool_Exp>;
 };
-
 
 /** query root */
 export type Query_RootUsers_By_PkArgs = {
@@ -3182,7 +3107,6 @@ export type Route_Details_Aggregate_Fields = {
   var_samp?: Maybe<Route_Details_Var_Samp_Fields>;
   variance?: Maybe<Route_Details_Variance_Fields>;
 };
-
 
 /** aggregate fields of "route_details" */
 export type Route_Details_Aggregate_FieldsCountArgs = {
@@ -3244,7 +3168,7 @@ export type Route_Details_Bool_Exp = {
 /** unique or primary key constraints on table "route_details" */
 export enum Route_Details_Constraint {
   /** unique or primary key constraint */
-  RouteDetailsPkey = 'route_details_pkey'
+  RouteDetailsPkey = 'route_details_pkey',
 }
 
 /** input type for incrementing integer column in table "route_details" */
@@ -3357,7 +3281,7 @@ export enum Route_Details_Select_Column {
   /** column name */
   SortIndex = 'sort_index',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** input type for updating data in table "route_details" */
@@ -3451,7 +3375,7 @@ export enum Route_Details_Update_Column {
   /** column name */
   SortIndex = 'sort_index',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** aggregate var_pop on columns */
@@ -3538,7 +3462,6 @@ export type Routes_Aggregate_Fields = {
   variance?: Maybe<Routes_Variance_Fields>;
 };
 
-
 /** aggregate fields of "routes" */
 export type Routes_Aggregate_FieldsCountArgs = {
   columns?: Maybe<Array<Routes_Select_Column>>;
@@ -3594,7 +3517,7 @@ export type Routes_Bool_Exp = {
 /** unique or primary key constraints on table "routes" */
 export enum Routes_Constraint {
   /** unique or primary key constraint */
-  RoutesPkey = 'routes_pkey'
+  RoutesPkey = 'routes_pkey',
 }
 
 /** input type for incrementing integer column in table "routes" */
@@ -3697,7 +3620,7 @@ export enum Routes_Select_Column {
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
-  UserId = 'user_id'
+  UserId = 'user_id',
 }
 
 /** input type for updating data in table "routes" */
@@ -3772,7 +3695,7 @@ export enum Routes_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
-  UserId = 'user_id'
+  UserId = 'user_id',
 }
 
 /** aggregate var_pop on columns */
@@ -3813,7 +3736,6 @@ export type Routes_Variance_Order_By = {
   id?: Maybe<Order_By>;
   user_id?: Maybe<Order_By>;
 };
-
 
 /** expression to compare columns of type smallint. All fields are combined with logical 'AND'. */
 export type Smallint_Comparison_Exp = {
@@ -3893,7 +3815,6 @@ export type Subscription_Root = {
   users_by_pk?: Maybe<Users>;
 };
 
-
 /** subscription root */
 export type Subscription_RootClientsArgs = {
   distinct_on?: Maybe<Array<Clients_Select_Column>>;
@@ -3902,7 +3823,6 @@ export type Subscription_RootClientsArgs = {
   order_by?: Maybe<Array<Clients_Order_By>>;
   where?: Maybe<Clients_Bool_Exp>;
 };
-
 
 /** subscription root */
 export type Subscription_RootClients_AggregateArgs = {
@@ -3913,12 +3833,10 @@ export type Subscription_RootClients_AggregateArgs = {
   where?: Maybe<Clients_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootClients_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** subscription root */
 export type Subscription_RootCompaniesArgs = {
@@ -3929,7 +3847,6 @@ export type Subscription_RootCompaniesArgs = {
   where?: Maybe<Companies_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootCompanies_AggregateArgs = {
   distinct_on?: Maybe<Array<Companies_Select_Column>>;
@@ -3939,12 +3856,10 @@ export type Subscription_RootCompanies_AggregateArgs = {
   where?: Maybe<Companies_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootCompanies_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** subscription root */
 export type Subscription_RootInventoriesArgs = {
@@ -3955,7 +3870,6 @@ export type Subscription_RootInventoriesArgs = {
   where?: Maybe<Inventories_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootInventories_AggregateArgs = {
   distinct_on?: Maybe<Array<Inventories_Select_Column>>;
@@ -3965,12 +3879,10 @@ export type Subscription_RootInventories_AggregateArgs = {
   where?: Maybe<Inventories_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootInventories_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** subscription root */
 export type Subscription_RootOrder_ProductsArgs = {
@@ -3981,7 +3893,6 @@ export type Subscription_RootOrder_ProductsArgs = {
   where?: Maybe<Order_Products_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootOrder_Products_AggregateArgs = {
   distinct_on?: Maybe<Array<Order_Products_Select_Column>>;
@@ -3991,12 +3902,10 @@ export type Subscription_RootOrder_Products_AggregateArgs = {
   where?: Maybe<Order_Products_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootOrder_Products_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** subscription root */
 export type Subscription_RootOrder_StatusArgs = {
@@ -4007,7 +3916,6 @@ export type Subscription_RootOrder_StatusArgs = {
   where?: Maybe<Order_Status_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootOrder_Status_AggregateArgs = {
   distinct_on?: Maybe<Array<Order_Status_Select_Column>>;
@@ -4017,12 +3925,10 @@ export type Subscription_RootOrder_Status_AggregateArgs = {
   where?: Maybe<Order_Status_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootOrder_Status_By_PkArgs = {
   value: Scalars['String'];
 };
-
 
 /** subscription root */
 export type Subscription_RootOrdersArgs = {
@@ -4033,7 +3939,6 @@ export type Subscription_RootOrdersArgs = {
   where?: Maybe<Orders_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootOrders_AggregateArgs = {
   distinct_on?: Maybe<Array<Orders_Select_Column>>;
@@ -4043,12 +3948,10 @@ export type Subscription_RootOrders_AggregateArgs = {
   where?: Maybe<Orders_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootOrders_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** subscription root */
 export type Subscription_RootRoute_DetailsArgs = {
@@ -4059,7 +3962,6 @@ export type Subscription_RootRoute_DetailsArgs = {
   where?: Maybe<Route_Details_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootRoute_Details_AggregateArgs = {
   distinct_on?: Maybe<Array<Route_Details_Select_Column>>;
@@ -4069,12 +3971,10 @@ export type Subscription_RootRoute_Details_AggregateArgs = {
   where?: Maybe<Route_Details_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootRoute_Details_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** subscription root */
 export type Subscription_RootRoutesArgs = {
@@ -4085,7 +3985,6 @@ export type Subscription_RootRoutesArgs = {
   where?: Maybe<Routes_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootRoutes_AggregateArgs = {
   distinct_on?: Maybe<Array<Routes_Select_Column>>;
@@ -4095,12 +3994,10 @@ export type Subscription_RootRoutes_AggregateArgs = {
   where?: Maybe<Routes_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootRoutes_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** subscription root */
 export type Subscription_RootUser_RoleArgs = {
@@ -4111,7 +4008,6 @@ export type Subscription_RootUser_RoleArgs = {
   where?: Maybe<User_Role_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootUser_Role_AggregateArgs = {
   distinct_on?: Maybe<Array<User_Role_Select_Column>>;
@@ -4121,12 +4017,10 @@ export type Subscription_RootUser_Role_AggregateArgs = {
   where?: Maybe<User_Role_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootUser_Role_By_PkArgs = {
   value: Scalars['String'];
 };
-
 
 /** subscription root */
 export type Subscription_RootUsersArgs = {
@@ -4137,7 +4031,6 @@ export type Subscription_RootUsersArgs = {
   where?: Maybe<Users_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootUsers_AggregateArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
@@ -4147,12 +4040,10 @@ export type Subscription_RootUsers_AggregateArgs = {
   where?: Maybe<Users_Bool_Exp>;
 };
 
-
 /** subscription root */
 export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['bigint'];
 };
-
 
 /** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
@@ -4189,7 +4080,6 @@ export type User_Role_Aggregate_Fields = {
   min?: Maybe<User_Role_Min_Fields>;
 };
 
-
 /** aggregate fields of "user_role" */
 export type User_Role_Aggregate_FieldsCountArgs = {
   columns?: Maybe<Array<User_Role_Select_Column>>;
@@ -4221,7 +4111,7 @@ export type User_Role_Bool_Exp = {
 /** unique or primary key constraints on table "user_role" */
 export enum User_Role_Constraint {
   /** unique or primary key constraint */
-  UserRolePkey = 'user_role_pkey'
+  UserRolePkey = 'user_role_pkey',
 }
 
 export enum User_Role_Enum {
@@ -4230,7 +4120,7 @@ export enum User_Role_Enum {
   /** Client company admin */
   CompanyAdmin = 'company_admin',
   /** Delivery man */
-  DeliveryMan = 'delivery_man'
+  DeliveryMan = 'delivery_man',
 }
 
 /** expression to compare columns of type user_role_enum. All fields are combined with logical 'AND'. */
@@ -4312,7 +4202,7 @@ export enum User_Role_Select_Column {
   /** column name */
   Comment = 'comment',
   /** column name */
-  Value = 'value'
+  Value = 'value',
 }
 
 /** input type for updating data in table "user_role" */
@@ -4326,7 +4216,7 @@ export enum User_Role_Update_Column {
   /** column name */
   Comment = 'comment',
   /** column name */
-  Value = 'value'
+  Value = 'value',
 }
 
 /** columns and relationships of "users" */
@@ -4365,7 +4255,6 @@ export type Users_Aggregate_Fields = {
   var_samp?: Maybe<Users_Var_Samp_Fields>;
   variance?: Maybe<Users_Variance_Fields>;
 };
-
 
 /** aggregate fields of "users" */
 export type Users_Aggregate_FieldsCountArgs = {
@@ -4425,7 +4314,7 @@ export type Users_Bool_Exp = {
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
   /** unique or primary key constraint */
-  UserPkey = 'user_pkey'
+  UserPkey = 'user_pkey',
 }
 
 /** input type for incrementing integer column in table "users" */
@@ -4542,7 +4431,7 @@ export enum Users_Select_Column {
   /** column name */
   Role = 'role',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** input type for updating data in table "users" */
@@ -4623,7 +4512,7 @@ export enum Users_Update_Column {
   /** column name */
   Role = 'role',
   /** column name */
-  UpdatedAt = 'updated_at'
+  UpdatedAt = 'updated_at',
 }
 
 /** aggregate var_pop on columns */
@@ -4665,29 +4554,55 @@ export type Users_Variance_Order_By = {
   id?: Maybe<Order_By>;
 };
 
-export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type MyQueryQueryVariables = Exact<{ [key: string]: never }>;
 
+export type MyQueryQuery = { __typename?: 'query_root' } & {
+  clients: Array<{ __typename?: 'clients' } & Pick<Clients, 'id'>>;
+};
 
-export type MyQueryQuery = (
-  { __typename?: 'query_root' }
-  & { clients: Array<(
-    { __typename?: 'clients' }
-    & Pick<Clients, 'id'>
-  )> }
-);
+export type SubmitOrdersMutationVariables = Exact<{
+  input: Array<Orders_Insert_Input>;
+}>;
+
+export type SubmitOrdersMutation = { __typename?: 'mutation_root' } & {
+  insert_orders?: Maybe<
+    { __typename?: 'orders_mutation_response' } & {
+      returning: Array<{ __typename?: 'orders' } & Pick<Orders, 'id' | 'address'>>;
+    }
+  >;
+};
 
 export const MyQueryDocument = gql`
-    query MyQuery {
-  clients {
-    id
+  query MyQuery {
+    clients {
+      id
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class MyQueryGQL extends Apollo.Query<MyQueryQuery, MyQueryQueryVariables> {
-    document = MyQueryDocument;
-    
+@Injectable({
+  providedIn: 'root',
+})
+export class MyQueryGQL extends Apollo.Query<MyQueryQuery, MyQueryQueryVariables> {
+  document = MyQueryDocument;
+}
+export const SubmitOrdersDocument = gql`
+  mutation SubmitOrders($input: [orders_insert_input!]!) {
+    insert_orders(objects: $input) {
+      returning {
+        id
+        address
+      }
+    }
   }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SubmitOrdersGQL extends Apollo.Mutation<
+  SubmitOrdersMutation,
+  SubmitOrdersMutationVariables
+> {
+  document = SubmitOrdersDocument;
+}

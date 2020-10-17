@@ -1,10 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AuthGuard } from './guards/auth.guard';
+import { LoggedGuard } from './guards/logged.guard';
 
 @NgModule({
   declarations: [],
   imports: [],
-  providers: [],
+  providers: [AuthGuard, LoggedGuard],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

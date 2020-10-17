@@ -8,11 +8,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class LoadControlsComponent {
   @Output()
   fileSelected = new EventEmitter<File>();
+  @Output()
+  sendClicked = new EventEmitter<File>();
 
   async handleFileInput(files: FileList) {
     const file = files.item(0);
     if (file) {
       this.fileSelected.emit(file);
     }
+  }
+
+  async handleSendClicked() {
+    this.sendClicked.emit();
   }
 }

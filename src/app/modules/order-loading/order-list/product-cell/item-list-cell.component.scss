@@ -1,0 +1,21 @@
+@import 'variables';
+
+ul {
+  li {
+    position: relative;
+    padding-left: 30px;
+    white-space: normal;
+    line-height: $ag-grid-line-height;
+  }
+}
+
+.exclamation-button {
+  position: absolute;
+  left: -20px;
+  border-radius: 50%;
+  display: block;
+  height: 30px;
+  padding: 0;
+  min-width: 30px;
+  line-height: 30px;
+}

@@ -22,5 +22,5 @@
     </label>
     <input color="primary" type="file" id="file" (change)="handleFileInput($event.target.files)" />
   </div>
-  <button mat-raised-button color="primary">ENVIAR</button>
+  <button mat-raised-button color="primary" (click)="handleSendClicked()">ENVIAR</button>
 </mat-card>
