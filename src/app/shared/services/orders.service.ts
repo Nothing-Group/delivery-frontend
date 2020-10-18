@@ -6,9 +6,7 @@ import { Orders_Insert_Input, SubmitOrdersGQL } from 'src/generated/graphql';
   providedIn: 'root',
 })
 export class OrderService {
-  constructor(private submitOrdersGQL: SubmitOrdersGQL) {
-    console.log('NEW ORDERS');
-  }
+  constructor(private submitOrdersGQL: SubmitOrdersGQL) {}
 
   submitOrders(orders: Orders_Insert_Input[]) {
     return this.submitOrdersGQL

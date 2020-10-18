@@ -1,0 +1,8 @@
+query Inventory {
+  inventories {
+    id
+    name
+    price
+    weight
+  }
+}
