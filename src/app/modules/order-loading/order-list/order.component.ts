@@ -5,6 +5,7 @@ import {
   ValueFormatterParams,
 } from '@ag-grid-community/all-modules';
 import { Component } from '@angular/core';
+import { InventoryService } from '@shared/services/inventory.service';
 import { OrderService } from '@shared/services/orders.service';
 import { booleanToString, parseCSV, ParsedCSV, stringToBoolean } from '@shared/utils/csv.utils';
 import { Maybe } from 'graphql/jsutils/Maybe';
@@ -13,31 +14,6 @@ import { orderUploadCSVHeader } from '../order-loading.constants';
 import { BoxSize, ProductAndQuantity } from '../order-loading.types';
 import { ProductCellComponent } from './product-cell/item-list-cell.component';
 
-const inventory = {
-  'PRODUCTO 1': {
-    id: 7,
-    name: 'PRODUCTO 1',
-  },
-  'PAPA RELLENA': {
-    id: 7,
-    name: 'Papa rellena',
-  },
-};
-
-const inventoryProducts = [
-  {
-    name: 'Mani',
-    id: 7,
-  },
-  {
-    name: 'Peras al vapor',
-    id: 9,
-  },
-  {
-    name: 'Nueces importadas',
-    id: 10,
-  },
-];
 @Component({
   selector: 'app-order-list',
   templateUrl: './order.component.html',
@@ -97,9 +73,7 @@ export class OrderComponent {
       cellRenderer: 'listRenderer',
       cellClass: 'cell-wrap-text',
       autoHeight: true,
-      cellRendererParams: {
-        inventoryProducts,
-      },
+      cellRendererParams: {},
     },
     {
       headerName: 'Pago contra entrega',
@@ -181,7 +155,7 @@ export class OrderComponent {
   public gridOptions: GridOptions;
   modules: Module[] = AllCommunityModules;
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService, private inventoryService: InventoryService) {
     this.gridOptions = {
       rowData: this.rowData,
       columnDefs: this.columnDefs,
@@ -246,19 +220,24 @@ export class OrderComponent {
       ]
         .filter(([productName, quantity]) => productName || quantity)
         .map(([productName, quantity]) => {
-          // TODO: get from service
-          const product = inventory[productName?.toUpperCase()];
+          const product = this.inventoryService.findProductByName(productName);
+          const quantityFixed = isNaN(+quantity) ? 0 : Number(quantity);
+          if (product) {
+            return {
+              product,
+              quantity: quantityFixed,
+            };
+          }
           return {
             product: {
               name: productName,
-              id: product?.id,
             },
-            quantity: isNaN(+quantity) ? 0 : +quantity,
+            quantity: quantityFixed,
           };
         });
 
-      // TODO: fn to find the box size
-      const size: BoxSize = { label: '20 X 50 X 12', id: 7 };
+      const size = this.inventoryService.findBoxSize(productsWithQuantity);
+
       return {
         ...csvRow,
         isCOD: stringToBoolean(csvRow.isCOD),

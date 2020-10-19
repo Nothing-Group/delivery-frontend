@@ -4,7 +4,7 @@ export type Product = {
 };
 
 export type ProductAndQuantity = {
-  product: Product;
+  product: Product | { name: string };
   quantity: number;
 };
 export type BoxSize = {

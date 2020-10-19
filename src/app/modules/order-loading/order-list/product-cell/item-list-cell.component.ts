@@ -7,6 +7,7 @@ import {
   ProductDialogData,
   ProductDialogResult,
 } from '@modules/order-loading/order-list/product-dialog/product-dialog.component';
+import { InventoryService } from '@shared/services/inventory.service';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Product, ProductAndQuantity } from '../../order-loading.types';
 
@@ -36,11 +37,13 @@ export class ProductCellComponent implements ICellEditorAngularComp {
   public showSelect = false;
   private params: ValueFormatterParams;
   private inventoryProducts: Product[] = [];
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private inventoryService: InventoryService) {}
   agInit(params: ValueFormatterParams): void {
     this.params = params;
     this.productsWithQuantity = params.value;
-    this.inventoryProducts = (params as any).inventoryProducts;
+    this.inventoryService.products$.subscribe((products: Product[]) => {
+      this.inventoryProducts = products;
+    });
   }
 
   getValue() {
