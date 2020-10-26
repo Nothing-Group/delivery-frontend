@@ -769,6 +769,259 @@ export type Companies_Variance_Order_By = {
   id?: Maybe<Order_By>;
 };
 
+/** columns and relationships of "heuheu" */
+export type Heuheu = {
+  __typename?: 'heuheu';
+  id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "heuheu" */
+export type Heuheu_Aggregate = {
+  __typename?: 'heuheu_aggregate';
+  aggregate?: Maybe<Heuheu_Aggregate_Fields>;
+  nodes: Array<Heuheu>;
+};
+
+/** aggregate fields of "heuheu" */
+export type Heuheu_Aggregate_Fields = {
+  __typename?: 'heuheu_aggregate_fields';
+  avg?: Maybe<Heuheu_Avg_Fields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Heuheu_Max_Fields>;
+  min?: Maybe<Heuheu_Min_Fields>;
+  stddev?: Maybe<Heuheu_Stddev_Fields>;
+  stddev_pop?: Maybe<Heuheu_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Heuheu_Stddev_Samp_Fields>;
+  sum?: Maybe<Heuheu_Sum_Fields>;
+  var_pop?: Maybe<Heuheu_Var_Pop_Fields>;
+  var_samp?: Maybe<Heuheu_Var_Samp_Fields>;
+  variance?: Maybe<Heuheu_Variance_Fields>;
+};
+
+
+/** aggregate fields of "heuheu" */
+export type Heuheu_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Heuheu_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "heuheu" */
+export type Heuheu_Aggregate_Order_By = {
+  avg?: Maybe<Heuheu_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Heuheu_Max_Order_By>;
+  min?: Maybe<Heuheu_Min_Order_By>;
+  stddev?: Maybe<Heuheu_Stddev_Order_By>;
+  stddev_pop?: Maybe<Heuheu_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Heuheu_Stddev_Samp_Order_By>;
+  sum?: Maybe<Heuheu_Sum_Order_By>;
+  var_pop?: Maybe<Heuheu_Var_Pop_Order_By>;
+  var_samp?: Maybe<Heuheu_Var_Samp_Order_By>;
+  variance?: Maybe<Heuheu_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "heuheu" */
+export type Heuheu_Arr_Rel_Insert_Input = {
+  data: Array<Heuheu_Insert_Input>;
+  on_conflict?: Maybe<Heuheu_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Heuheu_Avg_Fields = {
+  __typename?: 'heuheu_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "heuheu" */
+export type Heuheu_Avg_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "heuheu". All fields are combined with a logical 'AND'. */
+export type Heuheu_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Heuheu_Bool_Exp>>>;
+  _not?: Maybe<Heuheu_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Heuheu_Bool_Exp>>>;
+  id?: Maybe<Int_Comparison_Exp>;
+  name?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "heuheu" */
+export enum Heuheu_Constraint {
+  /** unique or primary key constraint */
+  HeuheuPkey = 'heuheu_pkey'
+}
+
+/** input type for incrementing integer column in table "heuheu" */
+export type Heuheu_Inc_Input = {
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "heuheu" */
+export type Heuheu_Insert_Input = {
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Heuheu_Max_Fields = {
+  __typename?: 'heuheu_max_fields';
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "heuheu" */
+export type Heuheu_Max_Order_By = {
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Heuheu_Min_Fields = {
+  __typename?: 'heuheu_min_fields';
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "heuheu" */
+export type Heuheu_Min_Order_By = {
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "heuheu" */
+export type Heuheu_Mutation_Response = {
+  __typename?: 'heuheu_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Heuheu>;
+};
+
+/** input type for inserting object relation for remote table "heuheu" */
+export type Heuheu_Obj_Rel_Insert_Input = {
+  data: Heuheu_Insert_Input;
+  on_conflict?: Maybe<Heuheu_On_Conflict>;
+};
+
+/** on conflict condition type for table "heuheu" */
+export type Heuheu_On_Conflict = {
+  constraint: Heuheu_Constraint;
+  update_columns: Array<Heuheu_Update_Column>;
+  where?: Maybe<Heuheu_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "heuheu" */
+export type Heuheu_Order_By = {
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: "heuheu" */
+export type Heuheu_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "heuheu" */
+export enum Heuheu_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "heuheu" */
+export type Heuheu_Set_Input = {
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Heuheu_Stddev_Fields = {
+  __typename?: 'heuheu_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "heuheu" */
+export type Heuheu_Stddev_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Heuheu_Stddev_Pop_Fields = {
+  __typename?: 'heuheu_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "heuheu" */
+export type Heuheu_Stddev_Pop_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Heuheu_Stddev_Samp_Fields = {
+  __typename?: 'heuheu_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "heuheu" */
+export type Heuheu_Stddev_Samp_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Heuheu_Sum_Fields = {
+  __typename?: 'heuheu_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "heuheu" */
+export type Heuheu_Sum_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** update columns of table "heuheu" */
+export enum Heuheu_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name'
+}
+
+/** aggregate var_pop on columns */
+export type Heuheu_Var_Pop_Fields = {
+  __typename?: 'heuheu_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "heuheu" */
+export type Heuheu_Var_Pop_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Heuheu_Var_Samp_Fields = {
+  __typename?: 'heuheu_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "heuheu" */
+export type Heuheu_Var_Samp_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Heuheu_Variance_Fields = {
+  __typename?: 'heuheu_variance_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "heuheu" */
+export type Heuheu_Variance_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
 /** columns and relationships of "inventories" */
 export type Inventories = {
   __typename?: 'inventories';
@@ -777,13 +1030,16 @@ export type Inventories = {
   company_id: Scalars['bigint'];
   created_at: Scalars['timestamptz'];
   details: Scalars['String'];
+  height: Scalars['Int'];
   id: Scalars['bigint'];
+  length: Scalars['Int'];
   name: Scalars['String'];
   price: Scalars['Int'];
   quantity: Scalars['Int'];
   updated_at: Scalars['timestamptz'];
   volume: Scalars['Int'];
   weight: Scalars['Int'];
+  width: Scalars['Int'];
 };
 
 /** aggregated selection of "inventories" */
@@ -841,21 +1097,27 @@ export type Inventories_Arr_Rel_Insert_Input = {
 export type Inventories_Avg_Fields = {
   __typename?: 'inventories_avg_fields';
   company_id?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  length?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   volume?: Maybe<Scalars['Float']>;
   weight?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "inventories" */
 export type Inventories_Avg_Order_By = {
   company_id?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "inventories". All fields are combined with a logical 'AND'. */
@@ -867,13 +1129,16 @@ export type Inventories_Bool_Exp = {
   company_id?: Maybe<Bigint_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   details?: Maybe<String_Comparison_Exp>;
+  height?: Maybe<Int_Comparison_Exp>;
   id?: Maybe<Bigint_Comparison_Exp>;
+  length?: Maybe<Int_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
   price?: Maybe<Int_Comparison_Exp>;
   quantity?: Maybe<Int_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
   volume?: Maybe<Int_Comparison_Exp>;
   weight?: Maybe<Int_Comparison_Exp>;
+  width?: Maybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "inventories" */
@@ -885,11 +1150,14 @@ export enum Inventories_Constraint {
 /** input type for incrementing integer column in table "inventories" */
 export type Inventories_Inc_Input = {
   company_id?: Maybe<Scalars['bigint']>;
+  height?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  length?: Maybe<Scalars['Int']>;
   price?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   volume?: Maybe<Scalars['Int']>;
   weight?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "inventories" */
@@ -898,13 +1166,16 @@ export type Inventories_Insert_Input = {
   company_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   details?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  length?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   volume?: Maybe<Scalars['Int']>;
   weight?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
@@ -913,13 +1184,16 @@ export type Inventories_Max_Fields = {
   company_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   details?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  length?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   volume?: Maybe<Scalars['Int']>;
   weight?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 /** order by max() on columns of table "inventories" */
@@ -927,13 +1201,16 @@ export type Inventories_Max_Order_By = {
   company_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   details?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -942,13 +1219,16 @@ export type Inventories_Min_Fields = {
   company_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   details?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  length?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   volume?: Maybe<Scalars['Int']>;
   weight?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 /** order by min() on columns of table "inventories" */
@@ -956,13 +1236,16 @@ export type Inventories_Min_Order_By = {
   company_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   details?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "inventories" */
@@ -993,13 +1276,16 @@ export type Inventories_Order_By = {
   company_id?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   details?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** primary key columns input for table: "inventories" */
@@ -1016,7 +1302,11 @@ export enum Inventories_Select_Column {
   /** column name */
   Details = 'details',
   /** column name */
+  Height = 'height',
+  /** column name */
   Id = 'id',
+  /** column name */
+  Length = 'length',
   /** column name */
   Name = 'name',
   /** column name */
@@ -1028,7 +1318,9 @@ export enum Inventories_Select_Column {
   /** column name */
   Volume = 'volume',
   /** column name */
-  Weight = 'weight'
+  Weight = 'weight',
+  /** column name */
+  Width = 'width'
 }
 
 /** input type for updating data in table "inventories" */
@@ -1036,97 +1328,124 @@ export type Inventories_Set_Input = {
   company_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   details?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  length?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   volume?: Maybe<Scalars['Int']>;
   weight?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate stddev on columns */
 export type Inventories_Stddev_Fields = {
   __typename?: 'inventories_stddev_fields';
   company_id?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  length?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   volume?: Maybe<Scalars['Float']>;
   weight?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "inventories" */
 export type Inventories_Stddev_Order_By = {
   company_id?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Inventories_Stddev_Pop_Fields = {
   __typename?: 'inventories_stddev_pop_fields';
   company_id?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  length?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   volume?: Maybe<Scalars['Float']>;
   weight?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "inventories" */
 export type Inventories_Stddev_Pop_Order_By = {
   company_id?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Inventories_Stddev_Samp_Fields = {
   __typename?: 'inventories_stddev_samp_fields';
   company_id?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  length?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   volume?: Maybe<Scalars['Float']>;
   weight?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "inventories" */
 export type Inventories_Stddev_Samp_Order_By = {
   company_id?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
 export type Inventories_Sum_Fields = {
   __typename?: 'inventories_sum_fields';
   company_id?: Maybe<Scalars['bigint']>;
+  height?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  length?: Maybe<Scalars['Int']>;
   price?: Maybe<Scalars['Int']>;
   quantity?: Maybe<Scalars['Int']>;
   volume?: Maybe<Scalars['Int']>;
   weight?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "inventories" */
 export type Inventories_Sum_Order_By = {
   company_id?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** update columns of table "inventories" */
@@ -1138,7 +1457,11 @@ export enum Inventories_Update_Column {
   /** column name */
   Details = 'details',
   /** column name */
+  Height = 'height',
+  /** column name */
   Id = 'id',
+  /** column name */
+  Length = 'length',
   /** column name */
   Name = 'name',
   /** column name */
@@ -1150,70 +1473,90 @@ export enum Inventories_Update_Column {
   /** column name */
   Volume = 'volume',
   /** column name */
-  Weight = 'weight'
+  Weight = 'weight',
+  /** column name */
+  Width = 'width'
 }
 
 /** aggregate var_pop on columns */
 export type Inventories_Var_Pop_Fields = {
   __typename?: 'inventories_var_pop_fields';
   company_id?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  length?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   volume?: Maybe<Scalars['Float']>;
   weight?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "inventories" */
 export type Inventories_Var_Pop_Order_By = {
   company_id?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Inventories_Var_Samp_Fields = {
   __typename?: 'inventories_var_samp_fields';
   company_id?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  length?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   volume?: Maybe<Scalars['Float']>;
   weight?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "inventories" */
 export type Inventories_Var_Samp_Order_By = {
   company_id?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Inventories_Variance_Fields = {
   __typename?: 'inventories_variance_fields';
   company_id?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  length?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
   quantity?: Maybe<Scalars['Float']>;
   volume?: Maybe<Scalars['Float']>;
   weight?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "inventories" */
 export type Inventories_Variance_Order_By = {
   company_id?: Maybe<Order_By>;
+  height?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  length?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
   volume?: Maybe<Order_By>;
   weight?: Maybe<Order_By>;
+  width?: Maybe<Order_By>;
 };
 
 /** mutation root */
@@ -1227,6 +1570,10 @@ export type Mutation_Root = {
   delete_companies?: Maybe<Companies_Mutation_Response>;
   /** delete single row from the table: "companies" */
   delete_companies_by_pk?: Maybe<Companies>;
+  /** delete data from the table: "heuheu" */
+  delete_heuheu?: Maybe<Heuheu_Mutation_Response>;
+  /** delete single row from the table: "heuheu" */
+  delete_heuheu_by_pk?: Maybe<Heuheu>;
   /** delete data from the table: "inventories" */
   delete_inventories?: Maybe<Inventories_Mutation_Response>;
   /** delete single row from the table: "inventories" */
@@ -1267,6 +1614,10 @@ export type Mutation_Root = {
   insert_companies?: Maybe<Companies_Mutation_Response>;
   /** insert a single row into the table: "companies" */
   insert_companies_one?: Maybe<Companies>;
+  /** insert data into the table: "heuheu" */
+  insert_heuheu?: Maybe<Heuheu_Mutation_Response>;
+  /** insert a single row into the table: "heuheu" */
+  insert_heuheu_one?: Maybe<Heuheu>;
   /** insert data into the table: "inventories" */
   insert_inventories?: Maybe<Inventories_Mutation_Response>;
   /** insert a single row into the table: "inventories" */
@@ -1307,6 +1658,10 @@ export type Mutation_Root = {
   update_companies?: Maybe<Companies_Mutation_Response>;
   /** update single row of the table: "companies" */
   update_companies_by_pk?: Maybe<Companies>;
+  /** update data of the table: "heuheu" */
+  update_heuheu?: Maybe<Heuheu_Mutation_Response>;
+  /** update single row of the table: "heuheu" */
+  update_heuheu_by_pk?: Maybe<Heuheu>;
   /** update data of the table: "inventories" */
   update_inventories?: Maybe<Inventories_Mutation_Response>;
   /** update single row of the table: "inventories" */
@@ -1363,6 +1718,18 @@ export type Mutation_RootDelete_CompaniesArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Companies_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_HeuheuArgs = {
+  where: Heuheu_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Heuheu_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -1487,6 +1854,20 @@ export type Mutation_RootInsert_CompaniesArgs = {
 export type Mutation_RootInsert_Companies_OneArgs = {
   object: Companies_Insert_Input;
   on_conflict?: Maybe<Companies_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_HeuheuArgs = {
+  objects: Array<Heuheu_Insert_Input>;
+  on_conflict?: Maybe<Heuheu_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Heuheu_OneArgs = {
+  object: Heuheu_Insert_Input;
+  on_conflict?: Maybe<Heuheu_On_Conflict>;
 };
 
 
@@ -1631,6 +2012,22 @@ export type Mutation_RootUpdate_Companies_By_PkArgs = {
   _inc?: Maybe<Companies_Inc_Input>;
   _set?: Maybe<Companies_Set_Input>;
   pk_columns: Companies_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_HeuheuArgs = {
+  _inc?: Maybe<Heuheu_Inc_Input>;
+  _set?: Maybe<Heuheu_Set_Input>;
+  where: Heuheu_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Heuheu_By_PkArgs = {
+  _inc?: Maybe<Heuheu_Inc_Input>;
+  _set?: Maybe<Heuheu_Set_Input>;
+  pk_columns: Heuheu_Pk_Columns_Input;
 };
 
 
@@ -2187,8 +2584,22 @@ export enum Order_Status_Constraint {
 }
 
 export enum Order_Status_Enum {
-  /** lat and long have been found */
-  Located = 'LOCATED'
+  /** orden asignada */
+  Assigned = 'ASSIGNED',
+  /** orden creada */
+  Created = 'CREATED',
+  /** orden entregada */
+  Delivered = 'DELIVERED',
+  /** orden finalizada */
+  Ended = 'ENDED',
+  /** Order address coordinates have been found */
+  Located = 'LOCATED',
+  /** direccion NO localizada */
+  NoLocated = 'NO_LOCATED',
+  /** orden en camino */
+  OnRoute = 'ON_ROUTE',
+  /** orden programada */
+  Programmed = 'PROGRAMMED'
 }
 
 /** expression to compare columns of type order_status_enum. All fields are combined with logical 'AND'. */
@@ -2297,11 +2708,11 @@ export type Orders = {
   detail: Scalars['String'];
   id: Scalars['bigint'];
   is_cod: Scalars['Boolean'];
+  phone: Scalars['bigint'];
   /** An array relationship */
-  order_products: Array<Order_Products>;
+  products: Array<Order_Products>;
   /** An aggregated array relationship */
-  order_products_aggregate: Order_Products_Aggregate;
-  phone: Scalars['Int'];
+  products_aggregate: Order_Products_Aggregate;
   status: Order_Status_Enum;
   total_price: Scalars['Int'];
   total_product_count: Scalars['Int'];
@@ -2312,7 +2723,7 @@ export type Orders = {
 
 
 /** columns and relationships of "orders" */
-export type OrdersOrder_ProductsArgs = {
+export type OrdersProductsArgs = {
   distinct_on?: Maybe<Array<Order_Products_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2322,7 +2733,7 @@ export type OrdersOrder_ProductsArgs = {
 
 
 /** columns and relationships of "orders" */
-export type OrdersOrder_Products_AggregateArgs = {
+export type OrdersProducts_AggregateArgs = {
   distinct_on?: Maybe<Array<Order_Products_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2420,8 +2831,8 @@ export type Orders_Bool_Exp = {
   detail?: Maybe<String_Comparison_Exp>;
   id?: Maybe<Bigint_Comparison_Exp>;
   is_cod?: Maybe<Boolean_Comparison_Exp>;
-  order_products?: Maybe<Order_Products_Bool_Exp>;
-  phone?: Maybe<Int_Comparison_Exp>;
+  phone?: Maybe<Bigint_Comparison_Exp>;
+  products?: Maybe<Order_Products_Bool_Exp>;
   status?: Maybe<Order_Status_Enum_Comparison_Exp>;
   total_price?: Maybe<Int_Comparison_Exp>;
   total_product_count?: Maybe<Int_Comparison_Exp>;
@@ -2441,7 +2852,7 @@ export type Orders_Inc_Input = {
   client_id?: Maybe<Scalars['bigint']>;
   company_id?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
-  phone?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['bigint']>;
   total_price?: Maybe<Scalars['Int']>;
   total_product_count?: Maybe<Scalars['Int']>;
   total_volume?: Maybe<Scalars['Int']>;
@@ -2458,8 +2869,8 @@ export type Orders_Insert_Input = {
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
   is_cod?: Maybe<Scalars['Boolean']>;
-  order_products?: Maybe<Order_Products_Arr_Rel_Insert_Input>;
-  phone?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['bigint']>;
+  products?: Maybe<Order_Products_Arr_Rel_Insert_Input>;
   status?: Maybe<Order_Status_Enum>;
   total_price?: Maybe<Scalars['Int']>;
   total_product_count?: Maybe<Scalars['Int']>;
@@ -2477,7 +2888,7 @@ export type Orders_Max_Fields = {
   company_id?: Maybe<Scalars['bigint']>;
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
-  phone?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['bigint']>;
   total_price?: Maybe<Scalars['Int']>;
   total_product_count?: Maybe<Scalars['Int']>;
   total_volume?: Maybe<Scalars['Int']>;
@@ -2510,7 +2921,7 @@ export type Orders_Min_Fields = {
   company_id?: Maybe<Scalars['bigint']>;
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
-  phone?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['bigint']>;
   total_price?: Maybe<Scalars['Int']>;
   total_product_count?: Maybe<Scalars['Int']>;
   total_volume?: Maybe<Scalars['Int']>;
@@ -2565,8 +2976,8 @@ export type Orders_Order_By = {
   detail?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   is_cod?: Maybe<Order_By>;
-  order_products_aggregate?: Maybe<Order_Products_Aggregate_Order_By>;
   phone?: Maybe<Order_By>;
+  products_aggregate?: Maybe<Order_Products_Aggregate_Order_By>;
   status?: Maybe<Order_By>;
   total_price?: Maybe<Order_By>;
   total_product_count?: Maybe<Order_By>;
@@ -2621,7 +3032,7 @@ export type Orders_Set_Input = {
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
   is_cod?: Maybe<Scalars['Boolean']>;
-  phone?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['bigint']>;
   status?: Maybe<Order_Status_Enum>;
   total_price?: Maybe<Scalars['Int']>;
   total_product_count?: Maybe<Scalars['Int']>;
@@ -2717,7 +3128,7 @@ export type Orders_Sum_Fields = {
   client_id?: Maybe<Scalars['bigint']>;
   company_id?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
-  phone?: Maybe<Scalars['Int']>;
+  phone?: Maybe<Scalars['bigint']>;
   total_price?: Maybe<Scalars['Int']>;
   total_product_count?: Maybe<Scalars['Int']>;
   total_volume?: Maybe<Scalars['Int']>;
@@ -2866,6 +3277,12 @@ export type Query_Root = {
   companies_aggregate: Companies_Aggregate;
   /** fetch data from the table: "companies" using primary key columns */
   companies_by_pk?: Maybe<Companies>;
+  /** fetch data from the table: "heuheu" */
+  heuheu: Array<Heuheu>;
+  /** fetch aggregated fields from the table: "heuheu" */
+  heuheu_aggregate: Heuheu_Aggregate;
+  /** fetch data from the table: "heuheu" using primary key columns */
+  heuheu_by_pk?: Maybe<Heuheu>;
   /** fetch data from the table: "inventories" */
   inventories: Array<Inventories>;
   /** fetch aggregated fields from the table: "inventories" */
@@ -2966,6 +3383,32 @@ export type Query_RootCompanies_AggregateArgs = {
 /** query root */
 export type Query_RootCompanies_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+
+/** query root */
+export type Query_RootHeuheuArgs = {
+  distinct_on?: Maybe<Array<Heuheu_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Heuheu_Order_By>>;
+  where?: Maybe<Heuheu_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootHeuheu_AggregateArgs = {
+  distinct_on?: Maybe<Array<Heuheu_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Heuheu_Order_By>>;
+  where?: Maybe<Heuheu_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootHeuheu_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -3870,6 +4313,12 @@ export type Subscription_Root = {
   companies_aggregate: Companies_Aggregate;
   /** fetch data from the table: "companies" using primary key columns */
   companies_by_pk?: Maybe<Companies>;
+  /** fetch data from the table: "heuheu" */
+  heuheu: Array<Heuheu>;
+  /** fetch aggregated fields from the table: "heuheu" */
+  heuheu_aggregate: Heuheu_Aggregate;
+  /** fetch data from the table: "heuheu" using primary key columns */
+  heuheu_by_pk?: Maybe<Heuheu>;
   /** fetch data from the table: "inventories" */
   inventories: Array<Inventories>;
   /** fetch aggregated fields from the table: "inventories" */
@@ -3970,6 +4419,32 @@ export type Subscription_RootCompanies_AggregateArgs = {
 /** subscription root */
 export type Subscription_RootCompanies_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+
+/** subscription root */
+export type Subscription_RootHeuheuArgs = {
+  distinct_on?: Maybe<Array<Heuheu_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Heuheu_Order_By>>;
+  where?: Maybe<Heuheu_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootHeuheu_AggregateArgs = {
+  distinct_on?: Maybe<Array<Heuheu_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Heuheu_Order_By>>;
+  where?: Maybe<Heuheu_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootHeuheu_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -4710,7 +5185,20 @@ export type InventoryQuery = (
   { __typename?: 'query_root' }
   & { inventories: Array<(
     { __typename?: 'inventories' }
-    & Pick<Inventories, 'id' | 'name' | 'price' | 'weight'>
+    & Pick<Inventories, 'id' | 'name' | 'price' | 'weight' | 'length' | 'width' | 'height'>
+  )> }
+);
+
+export type InventoryCreateOneMutationVariables = Exact<{
+  input: Inventories_Insert_Input;
+}>;
+
+
+export type InventoryCreateOneMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_inventories_one?: Maybe<(
+    { __typename?: 'inventories' }
+    & Pick<Inventories, 'company_id' | 'name' | 'price' | 'quantity' | 'volume' | 'weight' | 'id' | 'length' | 'width' | 'height'>
   )> }
 );
 
@@ -4752,6 +5240,9 @@ export const InventoryDocument = gql`
     name
     price
     weight
+    length
+    width
+    height
   }
 }
     `;
@@ -4761,6 +5252,30 @@ export const InventoryDocument = gql`
   })
   export class InventoryGQL extends Apollo.Query<InventoryQuery, InventoryQueryVariables> {
     document = InventoryDocument;
+    
+  }
+export const InventoryCreateOneDocument = gql`
+    mutation InventoryCreateOne($input: inventories_insert_input!) {
+  insert_inventories_one(object: $input) {
+    company_id
+    name
+    price
+    quantity
+    volume
+    weight
+    id
+    length
+    width
+    height
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class InventoryCreateOneGQL extends Apollo.Mutation<InventoryCreateOneMutation, InventoryCreateOneMutationVariables> {
+    document = InventoryCreateOneDocument;
     
   }
 export const SubmitOrdersDocument = gql`

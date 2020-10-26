@@ -1,17 +1,16 @@
-import { APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLink } from 'apollo-angular/http';
-import { split, ApolloClientOptions, DefaultOptions, from } from '@apollo/client/core';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { ApolloLink, DefaultOptions, InMemoryCache, split } from '@apollo/client/core';
+import { setContext } from '@apollo/client/link/context';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { setContext } from '@apollo/client/link/context';
-
-import { take } from 'rxjs/operators';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { APOLLO_OPTIONS } from 'apollo-angular';
+import { HttpLink } from 'apollo-angular/http';
 import { OperationDefinitionNode } from 'graphql';
-import { InMemoryCache, ApolloLink } from '@apollo/client/core';
-const uri = 'http://localhost:8080/v1/graphql';
+import { take } from 'rxjs/operators';
+
+const uri = 'https://flybackend.herokuapp.com/v1/graphql';
 const wsUri = 'ws://localhost:8080/v1/graphql';
 
 export function provideApollo(httpLink: HttpLink, auth: AngularFireAuth) {

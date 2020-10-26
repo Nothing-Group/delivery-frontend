@@ -3,12 +3,13 @@ import { BoxSize, Product, ProductAndQuantity } from '@modules/order-loading/ord
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { InventoryGQL } from 'src/generated/graphql';
+import { InventoryCreateOneGQL } from '../../../generated/graphql';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InventoryService {
-  private inventoryProducts: Product[] = [
+   /*private inventoryProducts: Product[] = [
     {
       name: 'Mani',
       id: 7,
@@ -28,19 +29,37 @@ export class InventoryService {
     {
       id: 7,
       name: 'Papa rellena',
-    },
-  ];
+    }, 
+  ];*/
 
-  private products: BehaviorSubject<Product[]> = new BehaviorSubject(this.inventoryProducts);
+  private products: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   public products$ = this.products.asObservable();
 
-  constructor(private inventoryGQL: InventoryGQL) {}
+  constructor(private inventoryGQL: InventoryGQL, private inventoryCreateOneGQL: InventoryCreateOneGQL) {}
+
+  createProduct(objDB:any ){
+    
+    const {name, price, alto, ancho,largo} = objDB;
+    const volumen = alto*ancho*largo;
+    this.inventoryCreateOneGQL.mutate({"input":{ "name": name, "price": price, "quantity": 15, "volume": volumen, "weight": 10, "details": "", "height":alto,"width":ancho,"length":largo}} as any)
+    .subscribe(data => {
+      
+      if(data.data?.insert_inventories_one){
+        const estado = [...this.products.getValue(), data.data?.insert_inventories_one];
+        this.products.next(estado);
+        
+      }
+
+
+    });
+  }
 
   fetchProducts() {
     this.inventoryGQL.fetch().subscribe((inventoryGQL) => {
       const products = inventoryGQL.data?.inventories;
       if (products) {
         this.products.next(products);
+        
       }
     });
   }
