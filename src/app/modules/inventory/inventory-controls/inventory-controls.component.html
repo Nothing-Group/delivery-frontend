@@ -1,3 +1,25 @@
 <mat-card class="controls-card">
-    <button mat-raised-button color="primary">ENVIAR</button>
+    <div>
+        <label class="controls-card__label" for="name">Nombre Producto</label>
+        <input class="controls-card__input" [(ngModel)]="name" type="text" name="name" id="name">
+        <label class="controls-card__label" for="price">Precio </label>
+        <input class="controls-card__input" [(ngModel)]="price" type="text" name="precio" id="precio">
+        <label class="controls-card__label" for="size">Tamaño </label>
+
+        <mat-form-field>
+            <mat-label>Tamaño</mat-label>
+            <mat-select [(ngModel)]="size" panelClass="ag-custom-component-popup">
+                <mat-option value="NO">Seleccione (Alto x Ancho x Largo )</mat-option>
+                <mat-option value="pequeño">Pequeño (20x10x10)</mat-option>
+                <mat-option value="normal">Normal (25x20x10) </mat-option>
+                <mat-option value="medio">Medio (35x20x15) </mat-option>
+                <mat-option value="grande">Grande (40x25x25)</mat-option>
+            </mat-select>
+            <mat-error> Porfavor seleccione un producto </mat-error>
+        </mat-form-field>
+
+        <label class="controls-card__label" for="info">Las unidades que usamos son centímetros **</label>
+
+    </div>
+    <button mat-raised-button color="primary" (click)="handleCreate()">AGREGAR</button>
 </mat-card>

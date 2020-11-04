@@ -4,5 +4,23 @@ query Inventory {
     name
     price
     weight
+    length
+    width
+    height
+  }
+}
+
+mutation InventoryCreateOne($input: inventories_insert_input!) {
+  insert_inventories_one(object: $input) {
+    company_id
+    name
+    price
+    quantity
+    volume
+    weight
+    id
+    length
+    width
+    height
   }
 }

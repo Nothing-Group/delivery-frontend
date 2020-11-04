@@ -1,12 +1,13 @@
 import { AllCommunityModules, GridOptions, Module } from '@ag-grid-community/all-modules';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { InventoryService } from '../../../shared/services/inventory.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent {
+export class ProductListComponent implements AfterViewInit {
   columnDefs = [
     {
       headerName: 'Nombre',
@@ -28,34 +29,29 @@ export class ProductListComponent {
       field: 'length',
       cellClass: 'cell-wrap-text',
     },
-  ];
-
-  rowData: Array<{ [key: string]: any }> = [
     {
-      name: 'miel',
-      length: '50',
-      width: '50',
-      height: '50',
-    },
-    {
-      name: 'miel50',
-      length: '50',
-      width: '50',
-      height: '50',
-    },
-    {
-      name: 'miel100',
-      length: '50',
-      width: '50',
-      height: '50',
+      headerName: 'Precio',
+      field: 'price',
+      cellClass: 'cell-wrap-text',
     },
   ];
 
   public gridOptions: GridOptions;
   modules: Module[] = AllCommunityModules;
-  constructor() {
+  ngAfterViewInit() {
+    this.inventoryService.fetchProducts();
+    this.inventoryService.products$.subscribe(data => {
+      this.gridOptions.api!.setRowData(data);
+    });
+  }
+
+  constructor(private inventoryService: InventoryService) {
+
+
+
+
     this.gridOptions = {
-      rowData: this.rowData,
+      rowData: undefined,
       columnDefs: this.columnDefs,
       onGridReady: () => {
         // TODO: disable on mobile
