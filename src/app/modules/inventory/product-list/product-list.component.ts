@@ -7,7 +7,7 @@ import { InventoryService } from '../../../shared/services/inventory.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements AfterViewInit{
+export class ProductListComponent implements AfterViewInit {
   columnDefs = [
     {
       headerName: 'Nombre',
@@ -36,21 +36,18 @@ export class ProductListComponent implements AfterViewInit{
     },
   ];
 
-  
-
   public gridOptions: GridOptions;
   modules: Module[] = AllCommunityModules;
   ngAfterViewInit() {
     this.inventoryService.fetchProducts();
     this.inventoryService.products$.subscribe(data => {
-      console.log("data", data)
       this.gridOptions.api!.setRowData(data);
-    })
+    });
   }
-      
-  constructor(private inventoryService:InventoryService) {
-  
-  
+
+  constructor(private inventoryService: InventoryService) {
+
+
 
 
     this.gridOptions = {
