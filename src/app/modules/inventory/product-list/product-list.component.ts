@@ -40,16 +40,12 @@ export class ProductListComponent implements AfterViewInit {
   modules: Module[] = AllCommunityModules;
   ngAfterViewInit() {
     this.inventoryService.fetchProducts();
-    this.inventoryService.products$.subscribe(data => {
+    this.inventoryService.products$.subscribe((data) => {
       this.gridOptions.api!.setRowData(data);
     });
   }
 
   constructor(private inventoryService: InventoryService) {
-
-
-
-
     this.gridOptions = {
       rowData: undefined,
       columnDefs: this.columnDefs,

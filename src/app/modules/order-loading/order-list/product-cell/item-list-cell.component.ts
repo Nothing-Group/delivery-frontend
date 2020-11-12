@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   ProductDialogComponent,
   ProductDialogData,
-  ProductDialogResult,
+  ProductDialogResult
 } from '@modules/order-loading/order-list/product-dialog/product-dialog.component';
 import { InventoryService } from '@shared/services/inventory.service';
 import { Maybe } from 'graphql/jsutils/Maybe';
@@ -37,7 +37,7 @@ export class ProductCellComponent implements ICellEditorAngularComp {
   public showSelect = false;
   private params: ValueFormatterParams;
   private inventoryProducts: Product[] = [];
-  constructor(public dialog: MatDialog, private inventoryService: InventoryService) {}
+  constructor(public dialog: MatDialog, private inventoryService: InventoryService) { }
   agInit(params: ValueFormatterParams): void {
     this.params = params;
     this.productsWithQuantity = params.value;
@@ -63,6 +63,7 @@ export class ProductCellComponent implements ICellEditorAngularComp {
   }
 
   openProductDialog(idx: Maybe<number>, title: string) {
+    console.log('inventory', this.inventoryProducts);
     const dialogRef = this.dialog.open<
       ProductDialogComponent,
       ProductDialogData,
@@ -92,5 +93,8 @@ export class ProductCellComponent implements ICellEditorAngularComp {
       updated[idx] = productAndQuantity;
     }
     this.params.node.setDataValue(this.params.colDef as any, updated);
+    console.log('params', this.params);
+    this.params.api!.refreshCells({ force: true });
+
   }
 }
