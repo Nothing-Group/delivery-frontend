@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import { productValidator } from '../../../../shared/validators';
 import { Product, ProductAndQuantity } from '../../order-loading.types';
 
 export type ProductDialogResult = Maybe<{
@@ -28,7 +29,7 @@ export class ProductDialogComponent {
   title = '';
   productList: Product[] = [];
   productEditForm = this.fb.group({
-    product: [null, Validators.required],
+    product: [null, productValidator],
     quantity: [
       null,
       [Validators.required, Validators.min(this.minQuantity), Validators.max(this.maxQuantity)],
@@ -39,6 +40,7 @@ export class ProductDialogComponent {
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: ProductDialogData,
   ) {
+    this.productEditForm.valueChanges.subscribe(data => console.log(this.productEditForm.getRawValue(), this.productEditForm.controls.product.errors));
     this.productList = data.products;
     this.title = data.title;
     console.log(data.title);

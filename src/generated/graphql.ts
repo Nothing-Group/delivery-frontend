@@ -5185,7 +5185,7 @@ export type InventoryQuery = (
   { __typename?: 'query_root' }
   & { inventories: Array<(
     { __typename?: 'inventories' }
-    & Pick<Inventories, 'id' | 'name' | 'price' | 'weight' | 'length' | 'width' | 'height'>
+    & Pick<Inventories, 'id' | 'name' | 'price' | 'weight' | 'length' | 'width' | 'height' | 'volume'>
   )> }
 );
 
@@ -5243,6 +5243,7 @@ export const InventoryDocument = gql`
     length
     width
     height
+    volume
   }
 }
     `;

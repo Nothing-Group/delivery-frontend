@@ -2,16 +2,16 @@ import {
   AllCommunityModules,
   GridOptions,
   Module,
-  ValueFormatterParams,
+  ValueFormatterParams
 } from '@ag-grid-community/all-modules';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '@shared/services/inventory.service';
 import { OrderService } from '@shared/services/orders.service';
 import { booleanToString, parseCSV, ParsedCSV, stringToBoolean } from '@shared/utils/csv.utils';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Order_Status_Enum } from 'src/generated/graphql';
+import { BoxNotFound, ProductNotFound } from '../../../shared/errors';
 import { orderUploadCSVHeader } from '../order-loading.constants';
-import { BoxSize, ProductAndQuantity } from '../order-loading.types';
+import { ProductAndQuantity } from '../order-loading.types';
 import { ProductCellComponent } from './product-cell/item-list-cell.component';
 
 @Component({
@@ -19,7 +19,9 @@ import { ProductCellComponent } from './product-cell/item-list-cell.component';
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss'],
 })
-export class OrderComponent {
+export class OrderComponent implements OnInit {
+
+
   columnDefs = [
     {
       headerName: 'Nombre',
@@ -83,8 +85,22 @@ export class OrderComponent {
     {
       headerName: 'Tamaño',
       field: 'size',
-      valueFormatter: (params: ValueFormatterParams) =>
-        (params.value as Maybe<BoxSize>)?.label || '',
+      valueFormatter: (params: ValueFormatterParams) => {
+        let size = null;
+        try {
+          size = this.orderService.findBox(params.data.productsWithQuantity).label;
+
+        } catch (error) {
+          console.log(error.message);
+          if (error.message === ProductNotFound) {
+            size = "";
+          }
+          else if (error.message === BoxNotFound) {
+            size = "CAPACIDAD MÁXIMA SUPERADA";
+          }
+        }
+        return size;
+      },
     },
   ];
 
@@ -174,6 +190,10 @@ export class OrderComponent {
     setTimeout(() => this.gridOptions.api!.resetRowHeights(), 100);
   }
 
+  ngOnInit() {
+    this.inventoryService.fetchProducts();
+  }
+
   handleSendClicked() {
     const orders = [
       {
@@ -236,13 +256,12 @@ export class OrderComponent {
           };
         });
 
-      const size = this.inventoryService.findBoxSize(productsWithQuantity);
+
 
       return {
         ...csvRow,
         isCOD: stringToBoolean(csvRow.isCOD),
-        productsWithQuantity,
-        size,
+        productsWithQuantity
       };
     });
   }

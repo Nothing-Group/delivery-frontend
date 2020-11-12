@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BoxSize, Product, ProductAndQuantity } from '@modules/order-loading/order-loading.types';
+import { Product } from '@modules/order-loading/order-loading.types';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { InventoryGQL } from 'src/generated/graphql';
@@ -49,7 +49,4 @@ export class InventoryService {
     return this.products.getValue().find((prod) => prod.name.toUpperCase() === name.toUpperCase());
   }
 
-  findBoxSize(productsWithQuantity: ProductAndQuantity[]): Maybe<BoxSize> {
-    return { label: '20 X 50 X 12', id: 7 };
-  }
 }
