@@ -2,7 +2,7 @@ import {
   AllCommunityModules,
   GridOptions,
   Module,
-  ValueFormatterParams
+  ValueFormatterParams,
 } from '@ag-grid-community/all-modules';
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '@shared/services/inventory.service';
@@ -20,8 +20,6 @@ import { ProductCellComponent } from './product-cell/item-list-cell.component';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-
-
   columnDefs = [
     {
       headerName: 'Nombre',
@@ -89,14 +87,12 @@ export class OrderComponent implements OnInit {
         let size = null;
         try {
           size = this.orderService.findBox(params.data.productsWithQuantity).label;
-
         } catch (error) {
           console.log(error.message);
           if (error.message === ProductNotFound) {
-            size = "";
-          }
-          else if (error.message === BoxNotFound) {
-            size = "CAPACIDAD MÁXIMA SUPERADA";
+            size = '';
+          } else if (error.message === BoxNotFound) {
+            size = 'CAPACIDAD MÁXIMA SUPERADA';
           }
         }
         return size;
@@ -256,12 +252,10 @@ export class OrderComponent implements OnInit {
           };
         });
 
-
-
       return {
         ...csvRow,
         isCOD: stringToBoolean(csvRow.isCOD),
-        productsWithQuantity
+        productsWithQuantity,
       };
     });
   }

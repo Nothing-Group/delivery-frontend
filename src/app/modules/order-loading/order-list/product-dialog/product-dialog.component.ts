@@ -40,7 +40,6 @@ export class ProductDialogComponent {
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: ProductDialogData,
   ) {
-    this.productEditForm.valueChanges.subscribe(data => console.log(this.productEditForm.getRawValue(), this.productEditForm.controls.product.errors));
     this.productList = data.products;
     this.title = data.title;
     console.log(data.title);
