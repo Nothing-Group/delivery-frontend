@@ -3,6 +3,12 @@ mutation SubmitOrders($input: [orders_insert_input!]!) {
     returning {
       id
       address
+      products {
+        quantity
+        inventory {
+          name
+        }
+      }
     }
   }
 }
