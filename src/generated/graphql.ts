@@ -2175,6 +2175,8 @@ export type Order_Products = {
   __typename?: 'order_products';
   created_at: Scalars['timestamptz'];
   id: Scalars['bigint'];
+  /** An object relationship */
+  inventory: Inventories;
   inventory_id: Scalars['bigint'];
   order_id: Scalars['bigint'];
   quantity: Scalars['smallint'];
@@ -2256,6 +2258,7 @@ export type Order_Products_Bool_Exp = {
   _or?: Maybe<Array<Maybe<Order_Products_Bool_Exp>>>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Bigint_Comparison_Exp>;
+  inventory?: Maybe<Inventories_Bool_Exp>;
   inventory_id?: Maybe<Bigint_Comparison_Exp>;
   order_id?: Maybe<Bigint_Comparison_Exp>;
   quantity?: Maybe<Smallint_Comparison_Exp>;
@@ -2280,6 +2283,7 @@ export type Order_Products_Inc_Input = {
 export type Order_Products_Insert_Input = {
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
+  inventory?: Maybe<Inventories_Obj_Rel_Insert_Input>;
   inventory_id?: Maybe<Scalars['bigint']>;
   order_id?: Maybe<Scalars['bigint']>;
   quantity?: Maybe<Scalars['smallint']>;
@@ -2354,6 +2358,7 @@ export type Order_Products_On_Conflict = {
 export type Order_Products_Order_By = {
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  inventory?: Maybe<Inventories_Order_By>;
   inventory_id?: Maybe<Order_By>;
   order_id?: Maybe<Order_By>;
   quantity?: Maybe<Order_By>;
@@ -2708,6 +2713,7 @@ export type Orders = {
   detail: Scalars['String'];
   id: Scalars['bigint'];
   is_cod: Scalars['Boolean'];
+  name?: Maybe<Scalars['String']>;
   phone: Scalars['bigint'];
   /** An array relationship */
   products: Array<Order_Products>;
@@ -2831,6 +2837,7 @@ export type Orders_Bool_Exp = {
   detail?: Maybe<String_Comparison_Exp>;
   id?: Maybe<Bigint_Comparison_Exp>;
   is_cod?: Maybe<Boolean_Comparison_Exp>;
+  name?: Maybe<String_Comparison_Exp>;
   phone?: Maybe<Bigint_Comparison_Exp>;
   products?: Maybe<Order_Products_Bool_Exp>;
   status?: Maybe<Order_Status_Enum_Comparison_Exp>;
@@ -2869,6 +2876,7 @@ export type Orders_Insert_Input = {
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
   is_cod?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['bigint']>;
   products?: Maybe<Order_Products_Arr_Rel_Insert_Input>;
   status?: Maybe<Order_Status_Enum>;
@@ -2888,6 +2896,7 @@ export type Orders_Max_Fields = {
   company_id?: Maybe<Scalars['bigint']>;
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
+  name?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['bigint']>;
   total_price?: Maybe<Scalars['Int']>;
   total_product_count?: Maybe<Scalars['Int']>;
@@ -2904,6 +2913,7 @@ export type Orders_Max_Order_By = {
   company_id?: Maybe<Order_By>;
   detail?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
   phone?: Maybe<Order_By>;
   total_price?: Maybe<Order_By>;
   total_product_count?: Maybe<Order_By>;
@@ -2921,6 +2931,7 @@ export type Orders_Min_Fields = {
   company_id?: Maybe<Scalars['bigint']>;
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
+  name?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['bigint']>;
   total_price?: Maybe<Scalars['Int']>;
   total_product_count?: Maybe<Scalars['Int']>;
@@ -2937,6 +2948,7 @@ export type Orders_Min_Order_By = {
   company_id?: Maybe<Order_By>;
   detail?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
   phone?: Maybe<Order_By>;
   total_price?: Maybe<Order_By>;
   total_product_count?: Maybe<Order_By>;
@@ -2976,6 +2988,7 @@ export type Orders_Order_By = {
   detail?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   is_cod?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
   phone?: Maybe<Order_By>;
   products_aggregate?: Maybe<Order_Products_Aggregate_Order_By>;
   status?: Maybe<Order_By>;
@@ -3008,6 +3021,8 @@ export enum Orders_Select_Column {
   /** column name */
   IsCod = 'is_cod',
   /** column name */
+  Name = 'name',
+  /** column name */
   Phone = 'phone',
   /** column name */
   Status = 'status',
@@ -3032,6 +3047,7 @@ export type Orders_Set_Input = {
   detail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
   is_cod?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['bigint']>;
   status?: Maybe<Order_Status_Enum>;
   total_price?: Maybe<Scalars['Int']>;
@@ -3165,6 +3181,8 @@ export enum Orders_Update_Column {
   Id = 'id',
   /** column name */
   IsCod = 'is_cod',
+  /** column name */
+  Name = 'name',
   /** column name */
   Phone = 'phone',
   /** column name */
@@ -5214,6 +5232,14 @@ export type SubmitOrdersMutation = (
     & { returning: Array<(
       { __typename?: 'orders' }
       & Pick<Orders, 'id' | 'address'>
+      & { products: Array<(
+        { __typename?: 'order_products' }
+        & Pick<Order_Products, 'quantity'>
+        & { inventory: (
+          { __typename?: 'inventories' }
+          & Pick<Inventories, 'name'>
+        ) }
+      )> }
     )> }
   )> }
 );
@@ -5285,6 +5311,12 @@ export const SubmitOrdersDocument = gql`
     returning {
       id
       address
+      products {
+        quantity
+        inventory {
+          name
+        }
+      }
     }
   }
 }

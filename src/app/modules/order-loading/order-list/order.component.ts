@@ -5,13 +5,17 @@ import {
   ValueFormatterParams,
 } from '@ag-grid-community/all-modules';
 import { Component, OnInit } from '@angular/core';
+import { BoxNotFound, ProductNotFound } from '@shared/errors';
 import { InventoryService } from '@shared/services/inventory.service';
 import { OrderService } from '@shared/services/orders.service';
 import { booleanToString, parseCSV, ParsedCSV, stringToBoolean } from '@shared/utils/csv.utils';
-import { Order_Status_Enum } from 'src/generated/graphql';
-import { BoxNotFound, ProductNotFound } from '../../../shared/errors';
+import {
+  Orders_Insert_Input,
+  Order_Products_Insert_Input,
+  Order_Status_Enum,
+} from 'src/generated/graphql';
 import { orderUploadCSVHeader } from '../order-loading.constants';
-import { ProductAndQuantity } from '../order-loading.types';
+import { Product, ProductAndQuantity } from '../order-loading.types';
 import { ProductCellComponent } from './product-cell/item-list-cell.component';
 
 @Component({
@@ -83,6 +87,13 @@ export class OrderComponent implements OnInit {
     {
       headerName: 'Tamaño',
       field: 'size',
+      // valueGetter: (params: ValueFormatterParams) => {
+      //   let size = null;
+      //   try {
+      //     size = this.orderService.findBox(params.data.productsWithQuantity);
+      //   } catch (error) {}
+      //   return size;
+      // },
       valueFormatter: (params: ValueFormatterParams) => {
         let size = null;
         try {
@@ -112,14 +123,12 @@ export class OrderComponent implements OnInit {
         {
           product: {
             name: 'Manzana',
-            id: 11,
           },
           quantity: '2',
         },
         {
           product: {
             name: 'Miel Organica Mc Pato',
-            id: 11,
           },
           quantity: 7,
         },
@@ -128,40 +137,39 @@ export class OrderComponent implements OnInit {
       address_detail:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
-    {
-      name: 'Alberto Enrique Perez Galvis',
-      address: 'Calle 32 Sur #32-65,',
-      phone: '341241234',
-      city: 'Bogota',
-      value: '32000',
-      productsWithQuantity: [],
-      address_detail: 'Conjunto Calarca, Torre 6, Apartamento 420',
-    },
-    {
-      name: 'Pedro Daniel Perez Galvis',
-      address: 'Calle 45 Sur Bis #38a-24b',
-      phone: '134142',
-      city: 'Bogota',
-      value: '72000',
-      productsWithQuantity: [
-        {
-          product: {
-            name: 'Miel ñññ Organica Mc Pato',
-          },
-          quantity: 7,
-        },
-        {
-          product: {
-            name: 'Mani Picante',
-            id: 9,
-          },
-          quantity: 7,
-        },
-      ],
+    // {
+    //   name: 'Alberto Enrique Perez Galvis',
+    //   address: 'Calle 32 Sur #32-65,',
+    //   phone: '341241234',
+    //   city: 'Bogota',
+    //   value: '32000',
+    //   productsWithQuantity: [],
+    //   address_detail: 'Conjunto Calarca, Torre 6, Apartamento 420',
+    // },
+    // {
+    //   name: 'Pedro Daniel Perez Galvis',
+    //   address: 'Calle 45 Sur Bis #38a-24b',
+    //   phone: '134142',
+    //   city: 'Bogota',
+    //   value: '72000',
+    //   productsWithQuantity: [
+    //     {
+    //       product: {
+    //         name: 'Miel ñññ Organica Mc Pato',
+    //       },
+    //       quantity: 7,
+    //     },
+    //     {
+    //       product: {
+    //         name: 'Mani Picante',
+    //       },
+    //       quantity: 7,
+    //     },
+    //   ],
 
-      size: '25x20x10',
-      address_detail: 'Conjunto Calarca, Torre 6, Apartamento 420',
-    },
+    //   size: '25x20x10',
+    //   address_detail: 'Conjunto Calarca, Torre 6, Apartamento 420',
+    // },
   ];
 
   public gridOptions: GridOptions;
@@ -191,33 +199,56 @@ export class OrderComponent implements OnInit {
   }
 
   handleSendClicked() {
-    const orders = [
-      {
-        address: '233',
-        city: '23',
-        total_product_count: 2,
-        total_price: 23,
-        total_weight: 23,
-        total_volume: 76,
-        is_cod: false,
-        detail: 'apto 2',
-        status: Order_Status_Enum.Located,
-        phone: 3433,
-      },
-      {
-        address: '233',
-        city: '23',
-        total_product_count: 2,
-        total_price: 23,
-        total_weight: 23,
-        total_volume: 76,
-        is_cod: false,
-        detail: 'apto 2',
-        status: Order_Status_Enum.Located,
-        phone: 3433,
-      },
-    ];
-    this.orderService.submitOrders(orders).subscribe(console.log);
+    const allData: any[] = [];
+    this.gridOptions.api!.forEachNode((node) => allData.push(node.data));
+    console.log('Data', allData);
+
+    const transformed: Orders_Insert_Input[] = allData.map((row) => {
+      const sum = (row.productsWithQuantity as ProductAndQuantity[]).reduce(
+        (acc, curr) => {
+          if (!('id' in curr.product) || curr.quantity <= 0) {
+            throw new Error(`:V Invalid Product ${curr}`);
+          }
+          return {
+            totalQuantity: acc.totalQuantity + Number(curr.quantity),
+            totalVolume: acc.totalVolume + Number(curr.product.volume),
+            totalPrice: acc.totalPrice + Number(curr.product.price),
+            totalWeight: acc.totalWeight + Number(curr.product.weight),
+          };
+        },
+        {
+          totalQuantity: 0,
+          totalVolume: 0,
+          totalPrice: 0,
+          totalWeight: 0,
+        },
+      );
+
+      const productsWithQuantity: Order_Products_Insert_Input[] = (row.productsWithQuantity as ProductAndQuantity[]).map(
+        (p) => ({
+          quantity: +p.quantity,
+          inventory_id: (p.product as Product).id,
+        }),
+      );
+      return {
+        address: row.address,
+        city: row.city,
+        name: row.name,
+        total_product_count: sum.totalQuantity,
+        total_price: sum.totalPrice,
+        total_weight: sum.totalWeight,
+        total_volume: sum.totalVolume,
+        is_cod: row.isCOD,
+        detail: row.address_detail,
+        status: Order_Status_Enum.Created,
+        phone: row.phone,
+        products: {
+          data: productsWithQuantity,
+        },
+      };
+    });
+
+    this.orderService.submitOrders(transformed).subscribe(console.log);
   }
 
   async handleFileSelected(file: File) {
